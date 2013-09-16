@@ -11,8 +11,8 @@ Public Class Form1
     Private Delegate Sub AppendOutputText2Delegate(ByVal text As String)
     Private WithEvents m_MediaConnectWatcher As ManagementEventWatcher
     Dim serial As String
-    Dim verint As Integer = 45
-    Dim VerString As String = "3.7.1"
+    Dim verint As Integer = 46
+    Dim VerString As String = "3.7.3"
     Private Sub ExiToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExiToolStripMenuItem.Click
         End
 
@@ -341,6 +341,7 @@ endFlash2:
                             My.Computer.Network.DownloadFile("http://urgero.org/adbgui/AdbWinApi.dll", "AdbWinApi.dll", vbNullString, vbNullString, True, 5000, True)
                             My.Computer.Network.DownloadFile("http://urgero.org/adbgui/AdbWinUsbApi.dll", "AdbWinUsbApi.dll", vbNullString, vbNullString, True, 5000, True)
                             My.Computer.Network.DownloadFile("http://urgero.org/adbgui/fastboot.exe", "fastboot.exe", vbNullString, vbNullString, True, 5000, True)
+                            My.Computer.Network.DownloadFile("http://urgero.org/adbgui/AndroidLib.dll", "AndroidLib.dll", vbNullString, vbNullString, True, 5000, True)
                         Catch ex As Exception
                             MsgBox("Could Not Update Completely!", MsgBoxStyle.Critical, "Error!")
                             MsgBox("Shutting down application!", MsgBoxStyle.Critical, "Error!")
@@ -371,6 +372,21 @@ endFlash2:
 
                     Else
                     End If
+                    Try
+                        If File.Exists("AndroidLib.upd") Then
+                        Else
+                            If MsgBox("There is an update for a Library (DLL/Plugin) that needs to be updated in order for ADBGUI to work properly. Would you like to update? (Hitting no will close this application.)", MsgBoxStyle.YesNo, "DLL Update") = MsgBoxResult.Yes Then
+                                My.Computer.Network.DownloadFile("http://urgero.org/adbgui/AndroidLib.dll", "AndroidLib.dll", vbNullString, vbNullString, True, 5000, True)
+                                MsgBox("Update has completed!", MsgBoxStyle.Information, "Finished!")
+                                File.Create("AndroidLib.upd")
+                            Else
+                                End
+                            End If
+                        End If
+                    Catch ex As Exception
+                        MsgBox(ex.Message)
+                    End Try
+
                 Catch ex As Exception
                     MsgBox("Please run this program as Administrator to gain access to System32!", MsgBoxStyle.Information, "ADB GUI")
 
@@ -633,7 +649,11 @@ continue1:
             Dim wc As New System.Net.WebClient()
             Dim address As String = "http://urgero.org/adbgui/adbversion.txt"
             Dim ver = wc.DownloadString(address)
-
+            Dim servermessage As String = "http://urgero.org/adbgui/message.txt"
+            Dim message = wc.DownloadString(servermessage)
+            RichTextBox1.Text = Message
+            ' My.Computer.Network.DownloadFile("http://urgero.org/adbgui/message.rtf", "message.rtf", vbNullString, vbNullString, False, 5000, True)
+            ' RichTextBox1.LoadFile("message.rtf")
             If ver > verint Then
                 If MsgBox("There is an update available, would you like to update?", MsgBoxStyle.YesNo, "Update Available!") = MsgBoxResult.Yes Then
                     Try
@@ -651,12 +671,11 @@ continue1:
             Label14.Text = "Finished Loading Resources!"
         Catch ex As Exception
             loading.Visible = False
-            MsgBox("Cannot reach the update server, please try updating later!", MsgBoxStyle.Information, "Oops!")
+            'MsgBox("Cannot reach the update server, please try updating later!", MsgBoxStyle.Information, "Oops!")
         End Try
         TabControl1.Enabled = True
         PictureBox1.Visible = False
         Label14.Visible = False
-
 
     End Sub
 
@@ -1160,5 +1179,18 @@ endInstall:
 
     Private Sub GetHelpToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GetHelpToolStripMenuItem.Click
         Form3.Show()
+    End Sub
+
+    Private Sub RichTextBox1_LinkClicked(sender As Object, e As LinkClickedEventArgs) Handles RichTextBox1.LinkClicked
+        Process.Start(e.LinkText)
+    End Sub
+
+    Private Sub Button34_Click(sender As Object, e As EventArgs) Handles Button34.Click
+        Dim p As New ProcessStartInfo
+        p.FileName = "adb.exe"
+        Dim arg As String = ofd1.FileName
+        p.Arguments = "logcat bugreport"
+        p.WindowStyle = ProcessWindowStyle.Normal
+        Process.Start(p)
     End Sub
 End Class
