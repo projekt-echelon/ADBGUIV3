@@ -118,61 +118,27 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="MenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>44, 51</value>
+    <value>17, 17</value>
   </metadata>
-  <data name="Label2.Text" xml:space="preserve">
-    <value>If you have any errors come up, or something is not working right, 
-please make sure you have the proper USB and ADB drivers installed 
-for your device.
+  <metadata name="bw1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>132, 17</value>
+  </metadata>
+  <data name="Label5.Text" xml:space="preserve">
+    <value>Welcome to the ADB Learning
+Center!
+
+Remember the following:
+1. Not all commands have a 
+tutorial.
+2. I update this list when I
+can. it is not complete yet.
 
 
-For functions that require root access, you need root to access.
-For info on rooting, please check out XDA-fourms or androidcenteral.
+What makes this different 
+than the ADB Help site?
+I will be making weekly
+tutorials on using ADB 
+commands.
 </value>
   </data>
-  <data name="Label4.Text" xml:space="preserve">
-    <value>Developer Mode should only be used when troubleshooting
-errors!
-
-Please be careful!
-
-By typing the following and checking the box you agree that any
-unwanted affects are of your own fault:
-devmode9184</value>
-  </data>
-  <data name="Label34.Text" xml:space="preserve">
-    <value>&gt; Some Samsung Devices are known to have issues with this application.
-&gt; Some HTC Devices may ignore commands sent from this device, unlocking and rooting may solve this problem.
-&gt; Not all commands are universial.</value>
-  </data>
-  <metadata name="ofd1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>143, 15</value>
-  </metadata>
-  <metadata name="ofd2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>209, 17</value>
-  </metadata>
-  <metadata name="ofd3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>286, 17</value>
-  </metadata>
-  <metadata name="BackgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>363, 17</value>
-  </metadata>
-  <metadata name="BackgroundWorker2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>515, 17</value>
-  </metadata>
-  <metadata name="BackgroundWorker3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>667, 17</value>
-  </metadata>
-  <metadata name="Timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>819, 17</value>
-  </metadata>
-  <metadata name="sfd1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>905, 17</value>
-  </metadata>
-  <metadata name="restore1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 21</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>55</value>
-  </metadata>
 </root>

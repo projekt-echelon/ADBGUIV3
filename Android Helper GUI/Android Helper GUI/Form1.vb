@@ -11,8 +11,8 @@ Public Class Form1
     Private Delegate Sub AppendOutputText2Delegate(ByVal text As String)
     Private WithEvents m_MediaConnectWatcher As ManagementEventWatcher
     Dim serial As String
-    Dim verint As Integer = 43
-    Dim VerString As String = "3.6.1"
+    Dim verint As Integer = 45
+    Dim VerString As String = "3.7.1"
     Private Sub ExiToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExiToolStripMenuItem.Click
         End
 
@@ -1062,8 +1062,8 @@ finStart:
         If restore1.FileName = "" Then
         Else
             If MsgBox("Are you sure you would like to restore: " & restore1.FileName & " ?", MsgBoxStyle.YesNo, "Are you sure") = MsgBoxResult.Yes Then
-                'Shell("adb restore """ & restore1.FileName & """")
-                MsgBox("adb restore """ & restore1.FileName & """")
+                Shell("adb restore """ & restore1.FileName & """")
+                'MsgBox("adb restore """ & restore1.FileName & """")
             End If
         End If
 
@@ -1152,5 +1152,13 @@ endInstall:
     Private Sub Button33_Click(sender As Object, e As EventArgs) Handles Button33.Click
         TextBox7.Clear()
         StartLogcat()
+    End Sub
+
+    Private Sub LearningCenterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LearningCenterToolStripMenuItem.Click
+        learn.Show()
+    End Sub
+
+    Private Sub GetHelpToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GetHelpToolStripMenuItem.Click
+        Form3.Show()
     End Sub
 End Class

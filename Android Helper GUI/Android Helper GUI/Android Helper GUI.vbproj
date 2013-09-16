@@ -148,6 +148,18 @@
     <Compile Include="Form2.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form3.Designer.vb">
+      <DependentUpon>Form3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form3.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="learn.designer.vb">
+      <DependentUpon>learn.vb</DependentUpon>
+    </Compile>
+    <Compile Include="learn.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="loading.Designer.vb">
       <DependentUpon>loading.vb</DependentUpon>
     </Compile>
@@ -185,6 +197,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form3.resx">
+      <DependentUpon>Form3.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="learn.resx">
+      <DependentUpon>learn.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="loading.resx">
       <DependentUpon>loading.vb</DependentUpon>
