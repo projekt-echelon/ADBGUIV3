@@ -1,0 +1,9 @@
+Version: 3.7.4
+Build Number: 48
+
+Short Change Log:
+> Added Ameers' Onandroid Backup script for older android devices (Newer supported with a patch)
+
+
+
+Would you like to update?

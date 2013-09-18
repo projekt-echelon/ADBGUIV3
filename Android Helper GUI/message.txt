@@ -1,0 +1,47 @@
+9/18/2013
+======BeginServerMessage======
+Current Release:
+3.7.4 Added ameer dawoods' script to do a running Nandroid Backup (Currently a Beta feature.)
+The script itself is not beta, but the way ADBGUI installs it is.
+As far as compatibility look here:
+https://github.com/ameer1234567890/OnlineNandroid/wiki/Supported-Devices
+
+======EndServerMessage======
+
+
+
+9/17/2013
+======BeginServerMessage======
+Current Release:
+3.7.3SP1P Is the first Partial Service Pack (Partial meaning in testing phase to see what can and cannot be done to the application in a service pack)
+Although service packs do not add functinality, I have changed the way the user sees the updates.
+
+Enjoy!
+======EndServerMessage======
+
+9/16/2013:
+======BeginServerMessage======
+Current Release:
+3.7.3 Has the latest features we can think of! Of course we are still working on more just for you! 
+What has been added in 3.7.3:
+> Partial Service Pack Support (DLL/PLUGIN)
+> Server Messages (Your reading now!)
+> Support for language packs (Multi-Language like en,es,fr, etc)
+
+
+Comming up in later updates:
+
+Version 4 of ADBGUI will support "Service Packs" as well as in place upgrades.
+All this allowing the program to be updated while it is in use.
+
+Also coming in Version 4:
+Ability to OTA Android device when available. Meaning ADBGUI will check if your device has an update waiting for it. (Note: This will only work for certain versions of android like Cyanogenmod.)
+
+Other News:
+If you haven't already: Why not check out some music I have been working on!
+http://urgero.org/home/?page_id=4051
+
+In need of translators:
+I am looking to translate my application into some other languages.
+Please contact me here: http://urgero.org/home/?page_id=12
+======EndServerMessage======

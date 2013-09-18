@@ -11,8 +11,8 @@ Public Class Form1
     Private Delegate Sub AppendOutputText2Delegate(ByVal text As String)
     Private WithEvents m_MediaConnectWatcher As ManagementEventWatcher
     Dim serial As String
-    Dim verint As Integer = 46
-    Dim VerString As String = "3.7.3"
+    Dim verint As Integer = 48
+    Dim VerString As String = "3.7.4"
     Private Sub ExiToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExiToolStripMenuItem.Click
         End
 
@@ -250,7 +250,7 @@ endFlash2:
 
     End Sub
 
-    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
+    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs)
         MsgBox("This program is brought to you by: Mitchell Urgero of URGERO.ORG (c)URGERO.ORG" + vbNewLine + " Application Version: " + VerString, MsgBoxStyle.Information, "About")
 
     End Sub
@@ -320,7 +320,7 @@ endFlash2:
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CheckForIllegalCrossThreadCalls = False
         Me.Text = "ADB Helper V: " + VerString
-
+        Label36.Text = "This program is brought to you by: Mitchell Urgero of URGERO.ORG (c)URGERO.ORG" + vbNewLine + "Application Version: " + VerString + vbNewLine + "Build Number: " + verint.ToString
         TabControl1.Enabled = False
         If Directory.Exists("backups") Then
 
@@ -545,7 +545,7 @@ finStart:
     End Sub
 
     Private Sub SourceCodeBrowserToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SourceCodeBrowserToolStripMenuItem.Click
-        Process.Start("http://urgero.org/explorer/data/public/e02c0bced273b5eafa9dc262c81f3053.php?lang=en")
+        Process.Start("https://github.com/mitchellurgero/ADBGUIV3")
     End Sub
 
     Private Sub Button17_Click(sender As Object, e As EventArgs) Handles Button17.Click
@@ -651,11 +651,15 @@ continue1:
             Dim ver = wc.DownloadString(address)
             Dim servermessage As String = "http://urgero.org/adbgui/message.txt"
             Dim message = wc.DownloadString(servermessage)
-            RichTextBox1.Text = Message
+            RichTextBox1.Text = message
+            Dim UpdateMessage As String = "http://urgero.org/adbgui/updatemessage.txt"
+            Dim uMessage = wc.DownloadString(UpdateMessage)
+            TextBox8.Text = uMessage
             ' My.Computer.Network.DownloadFile("http://urgero.org/adbgui/message.rtf", "message.rtf", vbNullString, vbNullString, False, 5000, True)
             ' RichTextBox1.LoadFile("message.rtf")
             If ver > verint Then
-                If MsgBox("There is an update available, would you like to update?", MsgBoxStyle.YesNo, "Update Available!") = MsgBoxResult.Yes Then
+
+                If MsgBox("An update has been found!" + vbNewLine + "Information about this update: " + vbNewLine + TextBox8.Text, MsgBoxStyle.YesNo, "Update Available!") = MsgBoxResult.Yes Then
                     Try
 
                         Process.Start("update.exe")
@@ -1192,5 +1196,59 @@ endInstall:
         p.Arguments = "logcat bugreport"
         p.WindowStyle = ProcessWindowStyle.Normal
         Process.Start(p)
+    End Sub
+
+    Private Sub Button35_Click(sender As Object, e As EventArgs) Handles Button35.Click
+        If MsgBox("Please note; this is most compatible with older devices, although if you download a patch from the link in the box, it can become compatible with newer devices. Continue?", MsgBoxStyle.YesNo, "Newer Device Warning") = MsgBoxResult.Yes Then
+        Else
+            GoTo endline
+        End If
+        Try
+            If MsgBox("This will install a small application to the sdcard partition, continue?", MsgBoxStyle.YesNo, "Continue?") = MsgBoxResult.Yes Then
+                My.Computer.Network.DownloadFile("http://urgero.org/adbgui/onandroid.txt", "onandroid", vbNullString, vbNullString, False, 5000, True)
+            Else
+
+            End If
+        Catch ex As Exception
+            MsgBox("Failed to download the latest Onandroid binary! " + ex.Message, MsgBoxStyle.Exclamation, "Oops!")
+            GoTo endline
+        End Try
+        'Run installer Onandroid
+        Try
+            Dim nand = device.PushFile("onandroid", "/sdcard/bin/onandroid")
+            Dim sw As New StreamWriter("onandroid.bat")
+            sw.WriteLine("@echo off")
+            sw.WriteLine("adb shell mkdir /sdcard/bin")
+            sw.WriteLine("adb push onandroid /sdcard/bin/onandroid")
+            sw.Close()
+            'Shell("onandroid.bat", AppWinStyle.NormalFocus, True)
+            If nand = False Then
+                MsgBox("Failed to install binary to System! Error is unknown! Manual install might be nessecary!", MsgBoxStyle.Critical, "Oops")
+            ElseIf nand = True Then
+                MsgBox("Install to sdcard complete, open terminal on your device and type the following: " + vbNewLine + "su" + vbNewLine + "sh ./sdcard/bin/onandroid", MsgBoxStyle.Information, "Yay!")
+            End If
+        Catch ex As Exception
+            MsgBox("Failed to install binary to System: " + ex.Message)
+            GoTo endline
+        End Try
+
+        Try
+            'Dim p As New ProcessStartInfo
+            'p.FileName = "adb.exe"
+            'p.Arguments = "shell sh ./sdcard/bin/onandroid"
+            'p.WindowStyle = ProcessWindowStyle.Normal
+            'Process.Start(p)
+            'Shell("adb shell su sh ./sdcard/bin/onandorid", AppWinStyle.NormalFocus, True)
+        Catch ex As Exception
+            MsgBox("ERROR: " + ex.Message, MsgBoxStyle.Exclamation, "Oops!")
+        End Try
+
+
+Endline:
+
+    End Sub
+
+    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+        Process.Start("https://github.com/ameer1234567890/OnlineNandroid/wiki/Supported-Devices")
     End Sub
 End Class

@@ -120,16 +120,6 @@
   <metadata name="MenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>44, 51</value>
   </metadata>
-  <data name="Label2.Text" xml:space="preserve">
-    <value>If you have any errors come up, or something is not working right, 
-please make sure you have the proper USB and ADB drivers installed 
-for your device.
-
-
-For functions that require root access, you need root to access.
-For info on rooting, please check out XDA-fourms or androidcenteral.
-</value>
-  </data>
   <data name="Label4.Text" xml:space="preserve">
     <value>Developer Mode should only be used when troubleshooting
 errors!
@@ -144,6 +134,16 @@ devmode9184</value>
     <value>&gt; Some Samsung Devices are known to have issues with this application.
 &gt; Some HTC Devices may ignore commands sent from this device, unlocking and rooting may solve this problem.
 &gt; Not all commands are universial.</value>
+  </data>
+  <data name="Label2.Text" xml:space="preserve">
+    <value>If you have any errors come up, or something is not working right, 
+please make sure you have the proper USB and ADB drivers installed 
+for your device.
+
+
+For functions that require root access, you need root to access.
+For info on rooting, please check out XDA-fourms or androidcenteral.
+</value>
   </data>
   <metadata name="ofd1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>143, 15</value>
