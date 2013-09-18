@@ -39,6 +39,8 @@ Partial Class Form1
         Me.GetHelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Label40 = New System.Windows.Forms.Label()
+        Me.Button36 = New System.Windows.Forms.Button()
         Me.TextBox8 = New System.Windows.Forms.TextBox()
         Me.Label32 = New System.Windows.Forms.Label()
         Me.Label31 = New System.Windows.Forms.Label()
@@ -52,6 +54,10 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.GroupBox16 = New System.Windows.Forms.GroupBox()
+        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
+        Me.Label39 = New System.Windows.Forms.Label()
+        Me.Button35 = New System.Windows.Forms.Button()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.GroupBox14 = New System.Windows.Forms.GroupBox()
         Me.Label20 = New System.Windows.Forms.Label()
@@ -167,16 +173,13 @@ Partial Class Form1
         Me.Button31 = New System.Windows.Forms.Button()
         Me.TextBox7 = New System.Windows.Forms.TextBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.GroupBox16 = New System.Windows.Forms.GroupBox()
-        Me.Button35 = New System.Windows.Forms.Button()
-        Me.Label39 = New System.Windows.Forms.Label()
-        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage2.SuspendLayout()
+        Me.GroupBox16.SuspendLayout()
         Me.GroupBox14.SuspendLayout()
         Me.GroupBox13.SuspendLayout()
         Me.GroupBox12.SuspendLayout()
@@ -208,7 +211,6 @@ Partial Class Form1
         Me.TabPage11.SuspendLayout()
         Me.GroupBox15.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox16.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -238,6 +240,7 @@ Partial Class Form1
         Me.ResetLoginScreenToolStripMenuItem.Name = "ResetLoginScreenToolStripMenuItem"
         Me.ResetLoginScreenToolStripMenuItem.Size = New System.Drawing.Size(189, 22)
         Me.ResetLoginScreenToolStripMenuItem.Text = "Reset Login Information"
+        Me.ResetLoginScreenToolStripMenuItem.Visible = False
         '
         'ExiToolStripMenuItem
         '
@@ -317,6 +320,8 @@ Partial Class Form1
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.Label40)
+        Me.TabPage1.Controls.Add(Me.Button36)
         Me.TabPage1.Controls.Add(Me.TextBox8)
         Me.TabPage1.Controls.Add(Me.Label32)
         Me.TabPage1.Controls.Add(Me.Label31)
@@ -334,8 +339,26 @@ Partial Class Form1
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage1.Size = New System.Drawing.Size(912, 311)
         Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "Install Applications"
+        Me.TabPage1.Text = "App Managment"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'Label40
+        '
+        Me.Label40.AutoSize = True
+        Me.Label40.Location = New System.Drawing.Point(139, 9)
+        Me.Label40.Name = "Label40"
+        Me.Label40.Size = New System.Drawing.Size(497, 52)
+        Me.Label40.TabIndex = 20
+        Me.Label40.Text = resources.GetString("Label40.Text")
+        '
+        'Button36
+        '
+        Me.Button36.Location = New System.Drawing.Point(10, 22)
+        Me.Button36.Name = "Button36"
+        Me.Button36.Size = New System.Drawing.Size(123, 23)
+        Me.Button36.TabIndex = 19
+        Me.Button36.Text = "Application Manager"
+        Me.Button36.UseVisualStyleBackColor = True
         '
         'TextBox8
         '
@@ -349,36 +372,43 @@ Partial Class Form1
         'Label32
         '
         Me.Label32.AutoSize = True
-        Me.Label32.Location = New System.Drawing.Point(7, 148)
+        Me.Label32.Enabled = False
+        Me.Label32.Location = New System.Drawing.Point(7, 202)
         Me.Label32.Name = "Label32"
         Me.Label32.Size = New System.Drawing.Size(310, 26)
         Me.Label32.TabIndex = 17
         Me.Label32.Text = "NOTE: Sometimes you may have to restart the device in order to" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "get android to se" & _
     "e that the apk is installed." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.Label32.Visible = False
         '
         'Label31
         '
         Me.Label31.AutoSize = True
-        Me.Label31.Location = New System.Drawing.Point(85, 65)
+        Me.Label31.Enabled = False
+        Me.Label31.Location = New System.Drawing.Point(85, 119)
         Me.Label31.Name = "Label31"
         Me.Label31.Size = New System.Drawing.Size(299, 26)
         Me.Label31.TabIndex = 16
         Me.Label31.Text = "If this does not work, try the Old Method before posting a" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "bug or similar, this " & _
     "is usually an Android issue, not the program."
+        Me.Label31.Visible = False
         '
         'Button30
         '
-        Me.Button30.Location = New System.Drawing.Point(10, 96)
+        Me.Button30.Enabled = False
+        Me.Button30.Location = New System.Drawing.Point(10, 150)
         Me.Button30.Name = "Button30"
         Me.Button30.Size = New System.Drawing.Size(75, 49)
         Me.Button30.TabIndex = 15
         Me.Button30.Text = "Use Old Method to install"
         Me.Button30.UseVisualStyleBackColor = True
+        Me.Button30.Visible = False
         '
         'Label30
         '
         Me.Label30.AutoSize = True
-        Me.Label30.Location = New System.Drawing.Point(304, 34)
+        Me.Label30.Enabled = False
+        Me.Label30.Location = New System.Drawing.Point(304, 88)
         Me.Label30.Name = "Label30"
         Me.Label30.Size = New System.Drawing.Size(172, 13)
         Me.Label30.TabIndex = 14
@@ -387,8 +417,9 @@ Partial Class Form1
         '
         'PictureBox9
         '
+        Me.PictureBox9.Enabled = False
         Me.PictureBox9.Image = Global.Android_Helper_GUI.My.Resources.Resources._32
-        Me.PictureBox9.Location = New System.Drawing.Point(270, 26)
+        Me.PictureBox9.Location = New System.Drawing.Point(270, 80)
         Me.PictureBox9.Name = "PictureBox9"
         Me.PictureBox9.Size = New System.Drawing.Size(30, 30)
         Me.PictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -418,37 +449,45 @@ Partial Class Form1
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(10, 67)
+        Me.Button2.Enabled = False
+        Me.Button2.Location = New System.Drawing.Point(10, 121)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
         Me.Button2.TabIndex = 3
         Me.Button2.Text = "Install Now"
         Me.Button2.UseVisualStyleBackColor = True
+        Me.Button2.Visible = False
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(188, 29)
+        Me.Button1.Enabled = False
+        Me.Button1.Location = New System.Drawing.Point(188, 83)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 2
         Me.Button1.Text = "Browse"
         Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.Visible = False
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(7, 12)
+        Me.Label1.Enabled = False
+        Me.Label1.Location = New System.Drawing.Point(7, 66)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(123, 13)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Select the APK to install:"
+        Me.Label1.Visible = False
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(7, 31)
+        Me.TextBox1.Enabled = False
+        Me.TextBox1.Location = New System.Drawing.Point(7, 85)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(175, 20)
         Me.TextBox1.TabIndex = 0
+        Me.TextBox1.Visible = False
         '
         'TabPage2
         '
@@ -473,6 +512,46 @@ Partial Class Form1
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Basic Commands"
         Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'GroupBox16
+        '
+        Me.GroupBox16.Controls.Add(Me.LinkLabel1)
+        Me.GroupBox16.Controls.Add(Me.Label39)
+        Me.GroupBox16.Controls.Add(Me.Button35)
+        Me.GroupBox16.Location = New System.Drawing.Point(694, 6)
+        Me.GroupBox16.Name = "GroupBox16"
+        Me.GroupBox16.Size = New System.Drawing.Size(88, 161)
+        Me.GroupBox16.TabIndex = 8
+        Me.GroupBox16.TabStop = False
+        Me.GroupBox16.Text = "Nandroid"
+        '
+        'LinkLabel1
+        '
+        Me.LinkLabel1.AutoSize = True
+        Me.LinkLabel1.Location = New System.Drawing.Point(1, 119)
+        Me.LinkLabel1.Name = "LinkLabel1"
+        Me.LinkLabel1.Size = New System.Drawing.Size(84, 13)
+        Me.LinkLabel1.TabIndex = 4
+        Me.LinkLabel1.TabStop = True
+        Me.LinkLabel1.Text = "Compatibility List"
+        '
+        'Label39
+        '
+        Me.Label39.AutoSize = True
+        Me.Label39.Location = New System.Drawing.Point(6, 58)
+        Me.Label39.Name = "Label39"
+        Me.Label39.Size = New System.Drawing.Size(57, 39)
+        Me.Label39.TabIndex = 3
+        Me.Label39.Text = "*Does not " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "require" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "reboot."
+        '
+        'Button35
+        '
+        Me.Button35.Location = New System.Drawing.Point(7, 20)
+        Me.Button35.Name = "Button35"
+        Me.Button35.Size = New System.Drawing.Size(75, 35)
+        Me.Button35.TabIndex = 0
+        Me.Button35.Text = "Backup Nandroid"
+        Me.Button35.UseVisualStyleBackColor = True
         '
         'Label23
         '
@@ -1265,7 +1344,7 @@ Partial Class Form1
         Me.Label34.AutoSize = True
         Me.Label34.Location = New System.Drawing.Point(7, 20)
         Me.Label34.Name = "Label34"
-        Me.Label34.Size = New System.Drawing.Size(538, 39)
+        Me.Label34.Size = New System.Drawing.Size(538, 52)
         Me.Label34.TabIndex = 1
         Me.Label34.Text = resources.GetString("Label34.Text")
         '
@@ -1577,46 +1656,6 @@ Partial Class Form1
         Me.PictureBox1.TabIndex = 12
         Me.PictureBox1.TabStop = False
         '
-        'GroupBox16
-        '
-        Me.GroupBox16.Controls.Add(Me.LinkLabel1)
-        Me.GroupBox16.Controls.Add(Me.Label39)
-        Me.GroupBox16.Controls.Add(Me.Button35)
-        Me.GroupBox16.Location = New System.Drawing.Point(694, 6)
-        Me.GroupBox16.Name = "GroupBox16"
-        Me.GroupBox16.Size = New System.Drawing.Size(88, 161)
-        Me.GroupBox16.TabIndex = 8
-        Me.GroupBox16.TabStop = False
-        Me.GroupBox16.Text = "Nandroid"
-        '
-        'Button35
-        '
-        Me.Button35.Location = New System.Drawing.Point(7, 20)
-        Me.Button35.Name = "Button35"
-        Me.Button35.Size = New System.Drawing.Size(75, 35)
-        Me.Button35.TabIndex = 0
-        Me.Button35.Text = "Backup Nandroid"
-        Me.Button35.UseVisualStyleBackColor = True
-        '
-        'Label39
-        '
-        Me.Label39.AutoSize = True
-        Me.Label39.Location = New System.Drawing.Point(6, 58)
-        Me.Label39.Name = "Label39"
-        Me.Label39.Size = New System.Drawing.Size(57, 39)
-        Me.Label39.TabIndex = 3
-        Me.Label39.Text = "*Does not " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "require" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "reboot."
-        '
-        'LinkLabel1
-        '
-        Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(1, 119)
-        Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(84, 13)
-        Me.LinkLabel1.TabIndex = 4
-        Me.LinkLabel1.TabStop = True
-        Me.LinkLabel1.Text = "Compatibility List"
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1646,6 +1685,8 @@ Partial Class Form1
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage2.PerformLayout()
+        Me.GroupBox16.ResumeLayout(False)
+        Me.GroupBox16.PerformLayout()
         Me.GroupBox14.ResumeLayout(False)
         Me.GroupBox14.PerformLayout()
         Me.GroupBox13.ResumeLayout(False)
@@ -1690,8 +1731,6 @@ Partial Class Form1
         Me.GroupBox15.ResumeLayout(False)
         Me.GroupBox15.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox16.ResumeLayout(False)
-        Me.GroupBox16.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1843,5 +1882,7 @@ Partial Class Form1
     Friend WithEvents Label39 As System.Windows.Forms.Label
     Friend WithEvents Button35 As System.Windows.Forms.Button
     Friend WithEvents LinkLabel1 As System.Windows.Forms.LinkLabel
+    Friend WithEvents Button36 As System.Windows.Forms.Button
+    Friend WithEvents Label40 As System.Windows.Forms.Label
 
 End Class

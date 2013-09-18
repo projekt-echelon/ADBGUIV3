@@ -1,14 +1,17 @@
 9/18/2013
 ======BeginServerMessage======
 Current Release:
-3.7.4 Added ameer dawoods' script to do a running Nandroid Backup (Currently a Beta feature.)
-The script itself is not beta, but the way ADBGUI installs it is.
-As far as compatibility look here:
-https://github.com/ameer1234567890/OnlineNandroid/wiki/Supported-Devices
+3.7.5 
+> Added ameer dawoods' script to do a running Nandroid Backup (Currently a Beta feature.)
+  The script itself is not beta, but the way ADBGUI installs it is.
+  As far as compatibility look here:
+  https://github.com/ameer1234567890/OnlineNandroid/wiki/Supported-Devices
+> Added an Application Manager which is in pre-beta release. This replaces the APK installer
+> Fixed bug in built in adb shell where it wouldn't launch on some situations.
+> Fixed some device detection issues for android 2.3.3 and 4.3
+
 
 ======EndServerMessage======
-
-
 
 9/17/2013
 ======BeginServerMessage======

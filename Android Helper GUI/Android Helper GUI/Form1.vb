@@ -11,8 +11,8 @@ Public Class Form1
     Private Delegate Sub AppendOutputText2Delegate(ByVal text As String)
     Private WithEvents m_MediaConnectWatcher As ManagementEventWatcher
     Dim serial As String
-    Dim verint As Integer = 48
-    Dim VerString As String = "3.7.4"
+    Dim verint As Integer = 49
+    Dim VerString As String = "3.7.5"
     Private Sub ExiToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExiToolStripMenuItem.Click
         End
 
@@ -318,6 +318,10 @@ endFlash2:
         End
     End Sub
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'If MsgBox("You must accept the following to run this program:" + vbNewLine + "1. You acknowledge that any warrenties implied or not are not effective." + vbNewLine + "2. This program uses commands that can infact Break/Brick devices if" + vbNewLine + "used improperly." + vbNewLine + "3. This program does not root devices, but rooted devices are compatible." + vbNewLine + "4. All trade marks are properties of their respective owners." + vbNewLine + "5. I am not responsible for any and all bricks." + vbNewLine + vbNewLine + "Do you agree?", MsgBoxStyle.YesNo, "Agreement") = MsgBoxResult.Yes Then
+        'Else
+        '    End
+        'End If
         CheckForIllegalCrossThreadCalls = False
         Me.Text = "ADB Helper V: " + VerString
         Label36.Text = "This program is brought to you by: Mitchell Urgero of URGERO.ORG (c)URGERO.ORG" + vbNewLine + "Application Version: " + VerString + vbNewLine + "Build Number: " + verint.ToString
@@ -831,9 +835,9 @@ startLine:
                 MyProcess = New Process
 
                 With MyProcess.StartInfo
-                    .FileName = "ADB.EXE"
-                    .Arguments = "SHELL"
-                    .UseShellExecute = False
+                .FileName = "CMD.EXE"
+                '.Arguments = "SHELL"
+                .UseShellExecute = False
                     .CreateNoWindow = True
                     .RedirectStandardInput = True
                     .RedirectStandardOutput = True
@@ -852,6 +856,9 @@ startLine:
                 Button25.Enabled = True
             Button24.Enabled = False
             TextBox6.Focus()
+            TextBox6.Text = "adb shell"
+            Button23.PerformClick()
+
                 GoTo finStart
 badLine:
             AppendOutputText("Please make sure ADB is installed to the system dir!" + vbNewLine)
@@ -1250,5 +1257,17 @@ Endline:
 
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
         Process.Start("https://github.com/ameer1234567890/OnlineNandroid/wiki/Supported-Devices")
+    End Sub
+
+    Private Sub Button36_Click(sender As Object, e As EventArgs) Handles Button36.Click
+        android.Dispose()
+        Label40.Text = "Please wait while launching Application Manager..."
+
+        uninstallapp.Show()
+        Label40.Text = "Please note: After you are done managing packages, please remember to close the window" + vbNewLine + "and hit scan when you are done!" + vbNewLine + "Also, Application Manager is in pre-beta release, some functions may not work, or may not work on some" + vbNewLine + "devices. Please use caution when using the application manager."
+    End Sub
+
+    Private Sub TabPage1_Click(sender As Object, e As EventArgs) Handles TabPage1.Click
+
     End Sub
 End Class

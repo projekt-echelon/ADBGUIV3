@@ -1,9 +1,11 @@
-Version: 3.7.4
-Build Number: 48
+Version: 3.7.5
+Build Number: 49
 
 Short Change Log:
 > Added Ameers' Onandroid Backup script for older android devices (Newer supported with a patch)
-
+> Added an Application Manager which is in pre-beta release. This replaces the APK installer
+> Fixed bug in built in adb shell where it wouldn't launch on some situations.
+> Fixed some device detection issues for android 2.3.3 and 4.3
 
 
 Would you like to update?

@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.Android_Helper_GUI.Form2
+            Me.MainForm = Global.Android_Helper_GUI.Form1
         End Sub
     End Class
 End Namespace
