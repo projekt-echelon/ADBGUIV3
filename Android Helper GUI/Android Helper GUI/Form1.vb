@@ -323,6 +323,12 @@ endFlash2:
         '    End
         'End If
         CheckForIllegalCrossThreadCalls = False
+        Try
+            My.Computer.Network.DownloadFile("http://urgero.org/adbgui/AndroidLib.dll", "AndroidLib.dll", vbNullString, vbNullString, False, 5000, True)
+        Catch ex As Exception
+
+        End Try
+
         Me.Text = "ADB Helper V: " + VerString
         Label36.Text = "This program is brought to you by: Mitchell Urgero of URGERO.ORG (c)URGERO.ORG" + vbNewLine + "Application Version: " + VerString + vbNewLine + "Build Number: " + verint.ToString
         TabControl1.Enabled = False
