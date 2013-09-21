@@ -100,8 +100,8 @@ Public Class uninstallapp
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Try
             Dim replacedtext As String = ListBox1.SelectedItem.ToString.Replace("package:", "")
-            Dim arg As String = "uninstall " + replacedtext
-            Dim adbcmd As AdbCommand = Adb.FormAdbShellCommand(device, True, "pm", arg)
+            Dim arg As String = "uninstall " + Label2.Text
+            Dim adbcmd As AdbCommand = Adb.FormAdbShellCommand(device, False, "pm", arg)
             Dim test = Adb.ExecuteAdbCommand(adbcmd)
             MsgBox("Uninstall " + test.ToString, MsgBoxStyle.Information, "Done")
             LoadApps()

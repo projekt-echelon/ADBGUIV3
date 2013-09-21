@@ -245,6 +245,7 @@
   <ItemGroup>
     <None Include="Resources\32.gif" />
     <None Include="Resources\btn_donateCC_LG.gif" />
+    <None Include="bin\Debug\AndroidLib.dll" />
     <Content Include="Visualpharm-Icons8-Metro-Style-Cell-Phones-Android.ico" />
   </ItemGroup>
   <ItemGroup>

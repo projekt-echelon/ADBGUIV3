@@ -11,8 +11,8 @@ Public Class Form1
     Private Delegate Sub AppendOutputText2Delegate(ByVal text As String)
     Private WithEvents m_MediaConnectWatcher As ManagementEventWatcher
     Dim serial As String
-    Dim verint As Integer = 50
-    Dim VerString As String = "3.7.6"
+    Dim verint As Integer = 51
+    Dim VerString As String = "3.8"
     Private Sub ExiToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExiToolStripMenuItem.Click
         End
 
@@ -324,9 +324,10 @@ endFlash2:
         'End If
         CheckForIllegalCrossThreadCalls = False
         Try
-            My.Computer.Network.DownloadFile("http://urgero.org/adbgui/AndroidLib.dll", "AndroidLib.dll", vbNullString, vbNullString, False, 5000, True)
+            'My.Computer.Network.DownloadFile("http://urgero.org/adbgui/AndroidLib.dll", "AndroidLib.dll", vbNullString, vbNullString, True, 5000, True)
+            File.WriteAllBytes("AndroidLib.dll", My.Resources.AndroidLib)
         Catch ex As Exception
-
+            MsgBox("Error setting up ADB Shell DLL: " + ex.Message + vbNewLine + "Please verify that AndroidLib.dll exsist, if not please download from urgero.org.", MsgBoxStyle.Critical, "Oops!")
         End Try
 
         Me.Text = "ADB Helper V: " + VerString
@@ -649,6 +650,9 @@ continue1:
             MsgBox("There has been an error communicating to the device. Here are a couple ways to troubleshoot the issue:" & vbNewLine & "1. Check the usb connection, unplug and plug back in the device." & vbNewLine & "2. Restarting the PC may solve the issue directly." & vbNewLine & "3. Make sure you have the correct drivers for your phone, and your version of windows. " & vbNewLine & "NOTE: Sometimes this error comes up because of a bug with android itself, if you see a serial number in the bottom left hand corner of the program, this error MAY be ignored, but take caution. Just because a serial number is there does not always mean that all the commands in this program will work. This error did come up for a reason.", MsgBoxStyle.Exclamation, "Oops!")
         End Try
         Button14.Enabled = True
+        TabControl1.Enabled = True
+        PictureBox1.Visible = False
+        Label14.Visible = False
         BackgroundWorker2.RunWorkerAsync()
         StartLogcat()
     End Sub
@@ -687,9 +691,7 @@ continue1:
             loading.Visible = False
             'MsgBox("Cannot reach the update server, please try updating later!", MsgBoxStyle.Information, "Oops!")
         End Try
-        TabControl1.Enabled = True
-        PictureBox1.Visible = False
-        Label14.Visible = False
+
 
     End Sub
 

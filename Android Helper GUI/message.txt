@@ -1,3 +1,18 @@
+9/20/2013:
+======BeginServerMessage======
+3.8
+> Now loads the device and program fast
+> AndroidLib.dll is now embedded.
+
+Note about server issues:
+It seems GoDaddy is having some server side issues today, so please stay with me as we all have to deal with it :(
+
+Enjoy!
+
+======EndServerMessage======
+
+
+
 9/20/2013
 ======BeginServerMessage======
 3.7.6

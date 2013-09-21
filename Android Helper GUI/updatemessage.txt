@@ -1,8 +1,10 @@
-Version: 3.7.6
-Build Number: 50
+Version: 3.8
+Build Number: 51
 
 Short Change Log:
 > Updated AndroidLib.dll (Needed for android 4.2.2)
+> Embedded AndroidLib.dll
+> Faster load times (When the server finally comes back to normal!)
 
 
 Would you like to update?
