@@ -93,11 +93,11 @@ Public Class learn
             item1 = Nothing
             item2 = Nothing
             Label4.Text = "Connected to: " + server
-            Button1.Enabled = True
+
             If TextBox3.Text = "N/A" Then
                 Button1.Enabled = False
             Else
-
+                Button1.Enabled = True
             End If
         Catch ex As Exception
             MsgBox(ex.Message)

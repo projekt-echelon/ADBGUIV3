@@ -91,19 +91,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\AndroidLib-master\AndroidLib\bin\Debug\AndroidLib.dll</HintPath>
     </Reference>
-    <Reference Include="CookComputing.XmlRpcV2, Version=2.5.0.0, Culture=neutral, PublicKeyToken=a7d6e17aa302004d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Downloads\JoeBlogs-master\packages\xmlrpcnet.2.5.0\lib\net20\CookComputing.XmlRpcV2.dll</HintPath>
-    </Reference>
-    <Reference Include="FileBrowserDLL">
-      <HintPath>..\..\..\..\..\Downloads\FileManager\FileBrowserDLL\bin\Release\FileBrowserDLL.dll</HintPath>
-    </Reference>
-    <Reference Include="Ionic.Zip">
-      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Dino Chiesa\DotNetZip Runtime 1.9\Ionic.Zip.dll</HintPath>
-    </Reference>
-    <Reference Include="JoeBlogs">
-      <HintPath>..\..\..\..\JoeBlogs.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -130,23 +117,11 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="explorer.Designer.vb">
-      <DependentUpon>explorer.vb</DependentUpon>
-    </Compile>
-    <Compile Include="explorer.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.vb">
       <DependentUpon>Form1.vb</DependentUpon>
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form2.Designer.vb">
-      <DependentUpon>Form2.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Form2.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form3.Designer.vb">
@@ -182,12 +157,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="root1.Designer.vb">
-      <DependentUpon>root1.vb</DependentUpon>
-    </Compile>
-    <Compile Include="root1.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="uninstallapp.Designer.vb">
       <DependentUpon>uninstallapp.vb</DependentUpon>
     </Compile>
@@ -196,14 +165,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="explorer.resx">
-      <DependentUpon>explorer.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
-      <DependentUpon>Form2.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form3.resx">
       <DependentUpon>Form3.vb</DependentUpon>
@@ -219,9 +182,6 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="root1.resx">
-      <DependentUpon>root1.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="uninstallapp.resx">
       <DependentUpon>uninstallapp.vb</DependentUpon>
@@ -277,46 +237,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <PublishFile Include="CookComputing.XmlRpcV2">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="FileBrowserDLL">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="Ionic.Zip">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="JoeBlogs">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
     <PublishFile Include="Visualpharm-Icons8-Metro-Style-Cell-Phones-Android.ico">
       <Visible>False</Visible>
       <Group>

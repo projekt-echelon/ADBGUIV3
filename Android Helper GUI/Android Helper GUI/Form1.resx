@@ -126,15 +126,20 @@ and hit scan when you are done!
 Also, Application Manager is in pre-beta release, some functions may not work, or may not work on some
 devices. Please use caution when using the application manager.</value>
   </data>
-  <data name="Label4.Text" xml:space="preserve">
-    <value>Developer Mode should only be used when troubleshooting
-errors!
+  <data name="TextBox9.Text" xml:space="preserve">
+    <value>The HTC bootloader unlocker is used for getting S-OFF on an HTC device. Your device needs to also be supported by the HTC Unlock software as well. If you havent already, please make a back up of your device by either using Nandroid, Onandroid, or the new Android 4.0 Backup features located in the 'Basic Commands' Tab in this program. THIS PROCESS CANNOT BE UNDONE!
 
-Please be careful!
+The First step will reboot your phone and attempt to grab the S-OFF Hash Key. If it cannot get a correctly formatted key then manual override will be triggered where you will need to type in the commands manually. But don't worry, we will walk you through that if the time comes.
 
-By typing the following and checking the box you agree that any
-unwanted affects are of your own fault:
-devmode9184</value>
+The Second step will send the hash key to the htcdev.com website over SSL Encryption to request a key file. (key.bin in some cases.)
+
+The Last step is rebooting the phone into fastboot and applying the key. This is where you need to either accept, or deny the request to allow custom firmware. That is your choice!!
+
+
+***PLEASE NOTE THAT THIS PROCESS DOES WIPE YOUR DEVICE OF ALL DATA INCLUDING CONTACTS EMAIL APPS, PICTURES (EXCEPT ON SDCARD), AND OTHER DATA. PLEASE MAKE SURE TO DO A FULL BACKUP.
+
+
+</value>
   </data>
   <data name="Label34.Text" xml:space="preserve">
     <value>&gt; Some Samsung Devices are known to have issues with this application.

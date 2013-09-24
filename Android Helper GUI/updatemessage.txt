@@ -1,10 +1,10 @@
-Version: 3.8
-Build Number: 51
+Version: 3.9
+Build Number: 52
 
 Short Change Log:
-> Updated AndroidLib.dll (Needed for android 4.2.2)
-> Embedded AndroidLib.dll
-> Faster load times (When the server finally comes back to normal!)
+> Removed unwanted/not needed/ and just broken commands
+> Added HTC Bootloader unlocker for you HTC fans!
+> Completely converted to using AndroidLib.dll
 
 
 Would you like to update?

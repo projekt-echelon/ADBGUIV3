@@ -11,8 +11,8 @@ Public Class Form1
     Private Delegate Sub AppendOutputText2Delegate(ByVal text As String)
     Private WithEvents m_MediaConnectWatcher As ManagementEventWatcher
     Dim serial As String
-    Dim verint As Integer = 51
-    Dim VerString As String = "3.8"
+    Dim verint As Integer = 52
+    Dim VerString As String = "3.9"
     Private Sub ExiToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExiToolStripMenuItem.Click
         End
 
@@ -105,148 +105,106 @@ endInstall:
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Dim p As New ProcessStartInfo
-        p.FileName = "adb.exe"
-        Dim arg As String = ofd1.FileName
-        p.Arguments = "reboot bootloader"
-        p.WindowStyle = ProcessWindowStyle.Hidden
-        Process.Start(p)
+
+        If android.HasConnectedDevices Then
+            Try
+                Dim adbcmd As AdbCommand = Adb.FormAdbCommand(device, "reboot", "bootloader")
+                Dim test = Adb.ExecuteAdbCommand(adbcmd)
+                MsgBox("Reboot " + test.ToString, MsgBoxStyle.Information, "Done")
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+        Else
+            MsgBox("An Android device must be connected to use this command!", MsgBoxStyle.Information, "Oops!")
+        End If
+
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        Dim p As New ProcessStartInfo
-        p.FileName = "adb.exe"
-        Dim arg As String = ofd1.FileName
-        p.Arguments = "reboot recovery"
-        p.WindowStyle = ProcessWindowStyle.Hidden
-        Process.Start(p)
-    End Sub
 
-    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        Dim p As New ProcessStartInfo
-        p.FileName = "adb.exe"
-        Dim arg As String = ofd1.FileName
-        p.Arguments = "reboot fastboot"
-        p.WindowStyle = ProcessWindowStyle.Hidden
-        Process.Start(p)
-    End Sub
+        If android.HasConnectedDevices Then
+            Try
+                Dim adbcmd As AdbCommand = Adb.FormAdbCommand(device, "reboot", "recovery")
+                Dim test = Adb.ExecuteAdbCommand(adbcmd)
+                MsgBox("Reboot " + test.ToString, MsgBoxStyle.Information, "Done")
+            Catch ex As Exception
+                MsgBox(ex.Message)
 
-    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-        Dim p As New ProcessStartInfo
-        p.FileName = "adb.exe"
-        Dim arg As String = ofd1.FileName
-        p.Arguments = "logcat"
-        p.WindowStyle = ProcessWindowStyle.Normal
-        Process.Start(p)
-    End Sub
-
-    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
-        If MsgBox("Please be aware, this should only be used for devs and other advanced users! Please hit no if you do not know what this does!", MsgBoxStyle.YesNo, "ADB GUI") = MsgBoxResult.Yes Then
-
-            Dim p As New ProcessStartInfo
-            p.FileName = "adb.exe"
-            Dim arg As String = ofd1.FileName
-            p.Arguments = "sync"
-            p.WindowStyle = ProcessWindowStyle.Normal
-            Process.Start(p)
+            End Try
         Else
-
+            MsgBox("An Android device must be connected to use this command!", MsgBoxStyle.Information, "Oops!")
         End If
     End Sub
 
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+
+        If android.HasConnectedDevices Then
+            Try
+                Dim adbcmd As AdbCommand = Adb.FormAdbCommand(device, "reboot", "fastboot")
+                Dim test = Adb.ExecuteAdbCommand(adbcmd)
+                MsgBox("Reboot " + test.ToString, MsgBoxStyle.Information, "Done")
+            Catch ex As Exception
+                MsgBox(ex.Message)
+
+            End Try
+        Else
+            MsgBox("An Android device must be connected to use this command!", MsgBoxStyle.Information, "Oops!")
+        End If
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        'Command needs logcat
+
+    End Sub
+
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+        If File.Exists("C:\Windows\adb.exe") Then
+            android.Dispose()
+        Else
+            MsgBox("adb.exe must be installed to system first, please select that option from the menu under File.", MsgBoxStyle.Exclamation, "Oops!")
+            GoTo EndLine
+        End If
         Dim p As New ProcessStartInfo
         p.FileName = "adb.exe"
         Dim arg As String = ofd1.FileName
         p.Arguments = "shell"
         p.WindowStyle = ProcessWindowStyle.Normal
         Process.Start(p)
-    End Sub
-
-    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
-        Dim p As New ProcessStartInfo
-        p.FileName = "adb.exe"
-        Dim arg As String = ofd1.FileName
-        p.Arguments = "remount"
-        p.WindowStyle = ProcessWindowStyle.Normal
-        Process.Start(p)
-    End Sub
-
-    Private Sub Button10_Click(sender As Object, e As EventArgs) Handles Button10.Click
-        MsgBox("This will NOT root your device, your device needs to be rooted before hand before running this command, Continue?", MsgBoxStyle.YesNo, "ADB GUI")
-        If MsgBoxResult.Yes Then
-            Dim p As New ProcessStartInfo
-            p.FileName = "adb.exe"
-            Dim arg As String = ofd1.FileName
-            p.Arguments = "root"
-            p.WindowStyle = ProcessWindowStyle.Normal
-            Process.Start(p)
-        Else
-
-        End If
+EndLine:
 
     End Sub
 
     Private Sub Button11_Click(sender As Object, e As EventArgs) Handles Button11.Click
         If ofd2.ShowDialog() = Windows.Forms.DialogResult.Cancel Then
-            GoTo endFlash1
+            GoTo endline
         End If
         Dim rec1 As String = ofd2.FileName
         If ofd2.FileName = "" Then
-            GoTo endFlash1
+            GoTo endline
         End If
-        Try
-            Dim p As New ProcessStartInfo
-            p.FileName = "adb.exe"
-            Dim arg As String = ofd1.FileName
-            p.Arguments = "reboot fastboot"
-            p.WindowStyle = ProcessWindowStyle.Normal
-            Process.Start(p)
-
-
-            Shell("ping 192.0.2.2 -n 1 -w 10000 > nul")
-
-            Dim p2 As New ProcessStartInfo
-            p2.FileName = "adb.exe"
-            p2.Arguments = "flash recovery " + ofd2.FileName
-            p2.WindowStyle = ProcessWindowStyle.Normal
-            Process.Start(p)
-        Catch ex As Exception
-            MsgBox("Possible Error has occured while trying to flash recovery." + ex.ToString + " Please send the error code to Me at urgero.org/ticket", MsgBoxStyle.Exclamation, "Error has occured")
-
-        End Try
-endFlash1:
-
+        If File.Exists("C:\Windows\fastboot.exe") Then
+            Shell("fastboot flash recovery " + """" + ofd2.FileName + """", AppWinStyle.NormalFocus, True)
+            MsgBox("Recovery Flash returned OK, try to reboot to recovery.", MsgBoxStyle.Information, "Done")
+        End If
+Endline:
     End Sub
 
     Private Sub Button12_Click(sender As Object, e As EventArgs) Handles Button12.Click
         If ofd3.ShowDialog() = Windows.Forms.DialogResult.Cancel Then
-            GoTo endFlash2
+            GoTo Endline
         End If
         Dim rec1 As String = ofd3.FileName
         If ofd3.FileName = "" Then
-            GoTo endFlash2
+            GoTo endline
         End If
-        Try
-            Dim p As New ProcessStartInfo
-            p.FileName = "adb.exe"
-            p.Arguments = "reboot fastboot"
-            p.WindowStyle = ProcessWindowStyle.Normal
-            Process.Start(p)
-
-
-            Shell("ping 192.0.2.2 -n 1 -w 20000 > nul")
-
-            Dim p2 As New ProcessStartInfo
-            p2.FileName = "adb.exe"
-            p2.Arguments = "flash boot " + ofd3.FileName
-            p2.WindowStyle = ProcessWindowStyle.Normal
-            Process.Start(p)
-        Catch ex As Exception
-            MsgBox("Possible Error has occured while trying to flash recovery." + ex.ToString + " Please send the error code to Me at urgero.org/ticket", MsgBoxStyle.Exclamation, "Error has occured")
-
-        End Try
-endFlash2:
+        If ofd3.FileName = "" Then
+            GoTo endline
+        End If
+        If File.Exists("C:\Windows\fastboot.exe") Then
+            Shell("fastboot flash boot " + """" + ofd3.FileName + """", AppWinStyle.NormalFocus, True)
+            MsgBox("Boot Flash returned OK, try to reboot.", MsgBoxStyle.Information, "Done")
+        End If
+Endline:
 
     End Sub
 
@@ -254,57 +212,8 @@ endFlash2:
         MsgBox("This program is brought to you by: Mitchell Urgero of URGERO.ORG (c)URGERO.ORG" + vbNewLine + " Application Version: " + VerString, MsgBoxStyle.Information, "About")
 
     End Sub
-    Private Function USBID()
-        Dim USBClass As New System.Management.ManagementClass("Win32_USBHub")
-        Dim USBCollection As System.Management.ManagementObjectCollection = USBClass.GetInstances()
-        Dim USB As System.Management.ManagementObject
 
-        For Each USB In USBCollection
-            Me.ListBox1.Items.Add("Device Name: " & USB("Name").ToString())
-            Me.ListBox1.Items.Add("-----------------------------------")
-
-            'Me.ListBox1.Items.Add("PNP Device ID = " & USB("PNPDeviceID").ToString())
-        Next USB
-    End Function
-
-    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
-        If CheckBox1.Checked = True Then
-            Try
-                If TextBox2.Text = "devmode9184" Then
-                    ListBox1.Enabled = True
-                    ListBox1.Visible = True
-                    Button13.Enabled = True
-                    Button13.Visible = True
-                    Button11.Visible = True
-                    Button12.Visible = True
-                    Button17.Visible = True
-                Else
-                    MsgBox("Wrong code to enter Developer Mode!", MsgBoxStyle.Information, "Error!")
-                    ListBox1.Enabled = False
-                    ListBox1.Visible = False
-                    TextBox2.Clear()
-                    CheckBox1.Checked = False
-                    Button13.Enabled = False
-                    Button13.Visible = False
-                    Button11.Visible = False
-                    Button12.Visible = False
-                    Button17.Visible = False
-                End If
-            Catch ex As Exception
-
-            End Try
-        Else
-            ListBox1.Enabled = False
-            ListBox1.Visible = False
-            Button13.Enabled = False
-            Button13.Visible = False
-        End If
-
-    End Sub
-
-    Private Sub Button13_Click(sender As Object, e As EventArgs) Handles Button13.Click
-        USBID()
-    End Sub
+    
 
     Private Sub Form1_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
         Try
@@ -324,15 +233,29 @@ endFlash2:
         'End If
         CheckForIllegalCrossThreadCalls = False
         Try
-            'My.Computer.Network.DownloadFile("http://urgero.org/adbgui/AndroidLib.dll", "AndroidLib.dll", vbNullString, vbNullString, True, 5000, True)
-            File.WriteAllBytes("AndroidLib.dll", My.Resources.AndroidLib)
+            If File.Exists("AndroidLib.dll") Then
+
+            Else
+                File.WriteAllBytes("AndroidLib.dll", My.Resources.AndroidLib)
+            End If
+
+
         Catch ex As Exception
             MsgBox("Error setting up ADB Shell DLL: " + ex.Message + vbNewLine + "Please verify that AndroidLib.dll exsist, if not please download from urgero.org.", MsgBoxStyle.Critical, "Oops!")
+        End Try
+        Try
+            If File.Exists("troubleshoot.rtf") Then
+                RichTextBox2.LoadFile("troubleshoot.rtf")
+            Else
+                RichTextBox2.AppendText("The troubleshoot document has not been found.")
+            End If
+        Catch ex As Exception
+
         End Try
 
         Me.Text = "ADB Helper V: " + VerString
         Label36.Text = "This program is brought to you by: Mitchell Urgero of URGERO.ORG (c)URGERO.ORG" + vbNewLine + "Application Version: " + VerString + vbNewLine + "Build Number: " + verint.ToString
-        TabControl1.Enabled = False
+        'TabControl1.Enabled = False
         If Directory.Exists("backups") Then
 
         Else
@@ -412,64 +335,8 @@ verline:
 
 
         BackgroundWorker1.RunWorkerAsync()
-
-        DisableSound()
-        Timer1.Enabled = True
-        Timer1.Start()
-        StartDetection()
     End Sub
-    Public Sub StartLogcat()
-        Try
-            If Label7.Text = "No Device Found!" Then
-                GoTo badLine2
-            Else
 
-            End If
-            If Label7.Text = "No Devices Found!" Then
-                GoTo badLine2
-            Else
-
-            End If
-            If File.Exists("C:\Windows\adb.exe") = True Then
-                GoTo startLine
-            Else
-                GoTo badLine
-            End If
-startLine:
-
-
-            MyProcess2 = New Process
-
-            With MyProcess2.StartInfo
-                .FileName = "cmd"
-                ' .Arguments = "SHELL"
-                .UseShellExecute = False
-                .CreateNoWindow = True
-                .RedirectStandardInput = True
-                .RedirectStandardOutput = True
-                .RedirectStandardError = True
-            End With
-
-            MyProcess2.Start()
-
-            MyProcess2.BeginErrorReadLine()      'start async read on stderr
-            MyProcess2.BeginOutputReadLine()     'start async read on stdout
-            MyProcess2.StandardInput.WriteLine("adb logcat") 'send an EXIT command to the Command Prompt
-            MyProcess2.StandardInput.Flush()
-            AppendOutputText2("Process Started at: " & MyProcess2.StartTime.ToString)
-
-            GoTo finStart
-badLine:
-            AppendOutputText2("Please make sure ADB is installed to the system dir!" + vbNewLine)
-            GoTo finStart
-
-badLine2:
-            AppendOutputText2("An android device needs to be connected first!" + vbNewLine)
-finStart:
-        Catch ex As Exception
-            MsgBox("Error starting ADB SHELL!!", MsgBoxStyle.Critical, "Oops!")
-        End Try
-    End Sub
     Public Sub StartDetection()
         ' __InstanceOperationEvent will trap both Creation and Deletion of class instances
         Dim query2 As String = "SELECT * FROM __InstanceOperationEvent WITHIN 10 WHERE TargetInstance ISA ""Win32_USBControllerDevice"""
@@ -518,12 +385,6 @@ finStart:
 
     End Function
 
-    Private Sub Bin4ryRootScriptToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Bin4ryRootScriptToolStripMenuItem.Click
-
-        root1.Show()
-
-
-    End Sub
 
     Private Sub Button16_Click(sender As Object, e As EventArgs) Handles Button16.Click
         Try
@@ -559,29 +420,8 @@ finStart:
         Process.Start("https://github.com/mitchellurgero/ADBGUIV3")
     End Sub
 
-    Private Sub Button17_Click(sender As Object, e As EventArgs) Handles Button17.Click
-        Try
-            If MsgBox("This will remove the pattern/password on your device, but may also brick it!" + vbNewLine + "This is only to be used for YOUR phone!" + vbNewLine + "Use at your own risk!" + vbNewLine + "Requires: Root acces in terminal!", MsgBoxStyle.OkCancel, "Continue?") = MsgBoxResult.Ok Then
-                Shell("adb shell rm data/system/*.key")
-                MsgBox("Please note, this does NOT work for non-rooted phones!")
-            End If
-        Catch ex As Exception
-
-        End Try
-    End Sub
-
-    Private Sub Button18_Click(sender As Object, e As EventArgs) Handles Button18.Click
-        'Dim esfv As New ExplorerStyleViewer()
-        'esfv.Show()
-        explorer.Show()
-    End Sub
     Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
-        Try
-            Button32.PerformClick()
 
-        Catch ex As Exception
-            GoTo continue1
-        End Try
 continue1:
         Try
             Button14.Enabled = False
@@ -647,14 +487,12 @@ continue1:
 
 
         Catch ex As Exception
-            MsgBox("There has been an error communicating to the device. Here are a couple ways to troubleshoot the issue:" & vbNewLine & "1. Check the usb connection, unplug and plug back in the device." & vbNewLine & "2. Restarting the PC may solve the issue directly." & vbNewLine & "3. Make sure you have the correct drivers for your phone, and your version of windows. " & vbNewLine & "NOTE: Sometimes this error comes up because of a bug with android itself, if you see a serial number in the bottom left hand corner of the program, this error MAY be ignored, but take caution. Just because a serial number is there does not always mean that all the commands in this program will work. This error did come up for a reason.", MsgBoxStyle.Exclamation, "Oops!")
+            MsgBox("There has been an error communicating to the device. Here are a couple ways to troubleshoot the issue:" & vbNewLine & "1. Check the usb connection, unplug and plug back in the device." & vbNewLine & "2. Restarting the PC may solve the issue directly." & vbNewLine & "3. Make sure you have the correct drivers for your phone, and your version of windows. " & vbNewLine & "NOTE: Sometimes this error comes up because of a bug with android itself, if you see a serial number in the bottom left hand corner of the program, this error MAY be ignored, but take caution. Just because a serial number is there does not always mean that all the commands in this program will work. This error did come up for a reason." + vbNewLine + "Exact error: " + ex.Message, MsgBoxStyle.Exclamation, "Oops!")
         End Try
         Button14.Enabled = True
-        TabControl1.Enabled = True
-        PictureBox1.Visible = False
-        Label14.Visible = False
+        'TabControl1.Enabled = True
+
         BackgroundWorker2.RunWorkerAsync()
-        StartLogcat()
     End Sub
 
     Private Sub BackgroundWorker2_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker2.DoWork
@@ -691,17 +529,13 @@ continue1:
             loading.Visible = False
             'MsgBox("Cannot reach the update server, please try updating later!", MsgBoxStyle.Information, "Oops!")
         End Try
-
+        PictureBox1.Visible = False
+        Label14.Visible = False
 
     End Sub
 
     Private Sub BackgroundWorker3_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker3.DoWork
-        Try
-Button32.PerformClick()
 
-        Catch ex As Exception
-            GoTo continue1
-        End Try
 continue1:
         Try
             Button14.Enabled = False
@@ -774,31 +608,43 @@ continue1:
         PictureBox1.Visible = False
         Label14.Visible = False
         Button14.Enabled = True
-        StartLogcat()
+
     End Sub
 
     Private Sub MyAndroidApplicationsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MyAndroidApplicationsToolStripMenuItem.Click
         Process.Start("https://play.google.com/store/search?q=urgero")
     End Sub
 
-    Private Sub Button19_Click(sender As Object, e As EventArgs) Handles Button19.Click
-        Shell("adb kill-server")
-        System.Threading.Thread.Sleep("5000")
-        Shell("adb start-server")
-    End Sub
-
     Private Sub Button20_Click(sender As Object, e As EventArgs) Handles Button20.Click
-        Shell("adb shell am kill-all")
-        System.Threading.Thread.Sleep("2000")
+
+        If android.HasConnectedDevices Then
+            Try
+                Dim adbcmd As AdbCommand = Adb.FormAdbShellCommand(device, True, "am", "kill-all")
+                Dim test = Adb.ExecuteAdbCommand(adbcmd)
+                MsgBox("Killed background processes: " + test.ToString, MsgBoxStyle.Information, "Done")
+            Catch ex As Exception
+                MsgBox("Error Uninstalling Application: " + ex.Message, MsgBoxStyle.Exclamation, "Oops!")
+
+            End Try
+        Else
+            MsgBox("An Android device must be connected to use this command!", MsgBoxStyle.Information, "Oops!")
+        End If
     End Sub
 
     Private Sub Button22_Click(sender As Object, e As EventArgs) Handles Button22.Click
-        Dim p As New ProcessStartInfo
-        p.FileName = "adb.exe"
         Dim arg As String = ofd1.FileName
-        p.Arguments = "push " + """" + arg + """" + " " + TextBox4.Text
-        p.WindowStyle = ProcessWindowStyle.Normal
-        Process.Start(p)
+        If android.HasConnectedDevices Then
+            Try
+                Dim adbcmd As AdbCommand = Adb.FormAdbCommand(device, "push", """" + arg + """" + " " + """" + TextBox4.Text + """")
+                Dim test = Adb.ExecuteAdbCommand(adbcmd)
+                MsgBox("Push: " + test.ToString, MsgBoxStyle.Information, "Done")
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+        Else
+            MsgBox("An Android device must be connected to use this command!", MsgBoxStyle.Information, "Oops!")
+        End If
+
     End Sub
 
     Private Sub Button21_Click(sender As Object, e As EventArgs) Handles Button21.Click
@@ -880,26 +726,8 @@ finStart:
             End Try
 
     End Sub
-    Private Sub AppendOutputText2(ByVal text As String)
 
-        If TextBox7.InvokeRequired Then
-            Dim myDelegate As New AppendOutputText2Delegate(AddressOf AppendOutputText2)
-            Me.Invoke(myDelegate, text)
-        Else
-            TextBox7.AppendText(text)
-        End If
 
-    End Sub
-    Private Sub MyProcess2_OutputDataReceived(ByVal sender As Object, ByVal e As System.Diagnostics.DataReceivedEventArgs) Handles MyProcess2.OutputDataReceived
-
-        AppendOutputText2(vbCrLf & e.Data)
-
-    End Sub
-    Private Sub MyProcess2_ErrorDataReceived(ByVal sender As Object, ByVal e As System.Diagnostics.DataReceivedEventArgs) Handles MyProcess2.ErrorDataReceived
-
-        AppendOutputText2(vbCrLf & e.Data)
-
-    End Sub
     Private Sub AppendOutputText(ByVal text As String)
 
         If TextBox5.InvokeRequired Then
@@ -1010,67 +838,6 @@ finStart:
         End Try
     End Sub
 
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        Try
-            whatbrowser.Document.GetElementById("skip_ad_button").InvokeMember("click")
-        Catch ex As Exception
-            EnableSound()
-            Timer1.Stop()
-            Timer1.Enabled = False
-            root1.Label18.ForeColor = Color.Green
-        End Try
-
-
-    End Sub
-    Private Property pageready As Boolean = False
-
-#Region "Page Loading Functions"
-    Private Sub WaitForPageLoad()
-        AddHandler whatbrowser.DocumentCompleted, New WebBrowserDocumentCompletedEventHandler(AddressOf PageWaiter)
-        While Not pageready
-            Application.DoEvents()
-        End While
-        pageready = False
-    End Sub
-
-    Private Sub PageWaiter(ByVal sender As Object, ByVal e As WebBrowserDocumentCompletedEventArgs)
-        If whatbrowser.ReadyState = WebBrowserReadyState.Complete Then
-            pageready = True
-            RemoveHandler whatbrowser.DocumentCompleted, New WebBrowserDocumentCompletedEventHandler(AddressOf PageWaiter)
-        End If
-    End Sub
-
-#End Region
-
-    Private Sub whatbrowser_DocumentCompleted(sender As Object, e As WebBrowserDocumentCompletedEventArgs) Handles whatbrowser.DocumentCompleted
-
-    End Sub
-    Public Sub DisableSound()
-        Dim keyValue As String
-        keyValue = "%SystemRoot%\Media\"
-        If Environment.OSVersion.Version.Major = 5 AndAlso Environment.OSVersion.Version.Minor > 0 Then
-            keyValue += "Windows XP Start.wav"
-        ElseIf Environment.OSVersion.Version.Major = 6 Then
-            keyValue += "Windows Navigation Start.wav"
-        Else
-            Return
-        End If
-        Dim key As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("AppEvents\Schemes\Apps\Explorer\Navigating\.Current", True)
-        key.SetValue(Nothing, "", Microsoft.Win32.RegistryValueKind.ExpandString)
-    End Sub
-    Public Sub EnableSound()
-        Dim keyValue As String
-        keyValue = "%SystemRoot%\Media\"
-        If Environment.OSVersion.Version.Major = 5 AndAlso Environment.OSVersion.Version.Minor > 0 Then
-            keyValue += "Windows XP Start.wav"
-        ElseIf Environment.OSVersion.Version.Major = 6 Then
-            keyValue += "Windows Navigation Start.wav"
-        Else
-            Return
-        End If
-        Dim key As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey("AppEvents\Schemes\Apps\Explorer\Navigating\.Current", True)
-        key.SetValue(Nothing, keyValue, Microsoft.Win32.RegistryValueKind.ExpandString)
-    End Sub
 
     Private Sub Button27_Click(sender As Object, e As EventArgs) Handles Button27.Click
         sfd1.ShowDialog()
@@ -1087,11 +854,18 @@ finStart:
         Dim objRandom As New System.Random
         Dim fileDateTime As String = DateTime.Now.ToString("yyyyMMdd") & "_" & DateTime.Now.ToString("HHmmss")
         Dim backupInteger As Integer = Math.Round(objRandom.NextDouble() * 163, 4)
-        Dim backupString As String = "adb backup -apk -all -f " & Application.StartupPath & "\backups\backup_" & fileDateTime.ToString & ".ab"
-        MsgBox("If you are running android 4.0 and up, you should see a prompt on your phone asking for a password." & vbNewLine & "It does not matter what the password is as long it follows the onscreen instructions. Then wait for the backup to finish and the phone should restart when it is done.")
-        Shell(backupString)
-        'MsgBox("File was/will be saved here: " & Application.StartupPath & "\backups\")
-        'adb restore
+
+        If android.HasConnectedDevices Then
+            Try
+                Dim adbcmd As AdbCommand = Adb.FormAdbCommand(device, "backup", "-apk -all -f " + """" + Application.StartupPath & "\backups\backup_" & fileDateTime.ToString & ".ab" + """")
+                Dim test = Adb.ExecuteAdbCommand(adbcmd)
+                MsgBox("The device will tell you when backup has completed. ", MsgBoxStyle.Information, "Done")
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+        Else
+            MsgBox("An Android device must be connected to use this command!", MsgBoxStyle.Information, "Oops!")
+        End If
     End Sub
 
     Private Sub Button29_Click(sender As Object, e As EventArgs) Handles Button29.Click
@@ -1099,9 +873,18 @@ finStart:
         restore1.ShowDialog()
         If restore1.FileName = "" Then
         Else
-            If MsgBox("Are you sure you would like to restore: " & restore1.FileName & " ?", MsgBoxStyle.YesNo, "Are you sure") = MsgBoxResult.Yes Then
-                Shell("adb restore """ & restore1.FileName & """")
-                'MsgBox("adb restore """ & restore1.FileName & """")
+            If MsgBox("Are you sure you would like to restore: " & restore1.FileName & " ?", MsgBoxStyle.YesNo, "Are you sure?") = MsgBoxResult.Yes Then
+                If android.HasConnectedDevices Then
+                    Try
+                        Dim adbcmd As AdbCommand = Adb.FormAdbCommand(device, "restore", """" + restore1.FileName + """")
+                        Dim test = Adb.ExecuteAdbCommand(adbcmd)
+                        MsgBox("The Device Will Let you know when the restore is complete.")
+                    Catch ex As Exception
+                        MsgBox(ex.Message)
+                    End Try
+                Else
+                    MsgBox("An Android device must be connected to use this command!", MsgBoxStyle.Information, "Oops!")
+                End If
             End If
         End If
 
@@ -1124,11 +907,11 @@ finStart:
         Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RKWA3MZANRADC")
     End Sub
 
-    Private Sub PictureBox6_Click(sender As Object, e As EventArgs) Handles PictureBox6.Click
+    Private Sub PictureBox6_Click(sender As Object, e As EventArgs)
         Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RKWA3MZANRADC")
     End Sub
 
-    Private Sub PictureBox7_Click(sender As Object, e As EventArgs) Handles PictureBox7.Click
+    Private Sub PictureBox7_Click(sender As Object, e As EventArgs)
         Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RKWA3MZANRADC")
     End Sub
 
@@ -1159,18 +942,7 @@ finStart:
 endInstall:
     End Sub
 
-    Private Sub Button31_Click(sender As Object, e As EventArgs) Handles Button31.Click
-        sfd1.ShowDialog()
-        If sfd1.FileName = "" Then
-
-        Else
-            TextBox7.AppendText("File Saved at: " & DateTime.Now)
-            My.Computer.FileSystem.WriteAllText(sfd1.FileName, TextBox7.Text, False)
-
-        End If
-    End Sub
-
-    Private Sub Button32_Click(sender As Object, e As EventArgs) Handles Button32.Click
+    Private Sub Button32_Click(sender As Object, e As EventArgs)
         Try
 
             MyProcess2.Kill()
@@ -1187,11 +959,6 @@ endInstall:
 
     End Sub
 
-    Private Sub Button33_Click(sender As Object, e As EventArgs) Handles Button33.Click
-        TextBox7.Clear()
-        StartLogcat()
-    End Sub
-
     Private Sub LearningCenterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LearningCenterToolStripMenuItem.Click
         learn.Show()
     End Sub
@@ -1203,67 +970,15 @@ endInstall:
     Private Sub RichTextBox1_LinkClicked(sender As Object, e As LinkClickedEventArgs) Handles RichTextBox1.LinkClicked
         Process.Start(e.LinkText)
     End Sub
+    Private Sub RichTextBox2_LinkClicked(sender As Object, e As LinkClickedEventArgs) Handles RichTextBox1.LinkClicked
+        Process.Start(e.LinkText)
+    End Sub
 
     Private Sub Button34_Click(sender As Object, e As EventArgs) Handles Button34.Click
-        Dim p As New ProcessStartInfo
-        p.FileName = "adb.exe"
-        Dim arg As String = ofd1.FileName
-        p.Arguments = "logcat bugreport"
-        p.WindowStyle = ProcessWindowStyle.Normal
-        Process.Start(p)
+        'Command Needs logcat
     End Sub
 
-    Private Sub Button35_Click(sender As Object, e As EventArgs) Handles Button35.Click
-        If MsgBox("Please note; this is most compatible with older devices, although if you download a patch from the link in the box, it can become compatible with newer devices. Continue?", MsgBoxStyle.YesNo, "Newer Device Warning") = MsgBoxResult.Yes Then
-        Else
-            GoTo endline
-        End If
-        Try
-            If MsgBox("This will install a small application to the sdcard partition, continue?", MsgBoxStyle.YesNo, "Continue?") = MsgBoxResult.Yes Then
-                My.Computer.Network.DownloadFile("http://urgero.org/adbgui/onandroid.txt", "onandroid", vbNullString, vbNullString, False, 5000, True)
-            Else
-
-            End If
-        Catch ex As Exception
-            MsgBox("Failed to download the latest Onandroid binary! " + ex.Message, MsgBoxStyle.Exclamation, "Oops!")
-            GoTo endline
-        End Try
-        'Run installer Onandroid
-        Try
-            Dim nand = device.PushFile("onandroid", "/sdcard/bin/onandroid")
-            Dim sw As New StreamWriter("onandroid.bat")
-            sw.WriteLine("@echo off")
-            sw.WriteLine("adb shell mkdir /sdcard/bin")
-            sw.WriteLine("adb push onandroid /sdcard/bin/onandroid")
-            sw.Close()
-            'Shell("onandroid.bat", AppWinStyle.NormalFocus, True)
-            If nand = False Then
-                MsgBox("Failed to install binary to System! Error is unknown! Manual install might be nessecary!", MsgBoxStyle.Critical, "Oops")
-            ElseIf nand = True Then
-                MsgBox("Install to sdcard complete, open terminal on your device and type the following: " + vbNewLine + "su" + vbNewLine + "sh ./sdcard/bin/onandroid", MsgBoxStyle.Information, "Yay!")
-            End If
-        Catch ex As Exception
-            MsgBox("Failed to install binary to System: " + ex.Message)
-            GoTo endline
-        End Try
-
-        Try
-            'Dim p As New ProcessStartInfo
-            'p.FileName = "adb.exe"
-            'p.Arguments = "shell sh ./sdcard/bin/onandroid"
-            'p.WindowStyle = ProcessWindowStyle.Normal
-            'Process.Start(p)
-            'Shell("adb shell su sh ./sdcard/bin/onandorid", AppWinStyle.NormalFocus, True)
-        Catch ex As Exception
-            MsgBox("ERROR: " + ex.Message, MsgBoxStyle.Exclamation, "Oops!")
-        End Try
-
-
-Endline:
-
-    End Sub
-
-    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs)
         Process.Start("https://github.com/ameer1234567890/OnlineNandroid/wiki/Supported-Devices")
     End Sub
 
@@ -1276,6 +991,83 @@ Endline:
     End Sub
 
     Private Sub TabPage1_Click(sender As Object, e As EventArgs) Handles TabPage1.Click
+
+    End Sub
+
+    Private Sub Button7_Click_1(sender As Object, e As EventArgs) Handles Button7.Click
+
+        If android.HasConnectedDevices Then
+            Try
+                Dim adbcmd As AdbCommand = Adb.FormAdbCommand(device, "reboot", "fastboot")
+                Dim test = Adb.ExecuteAdbCommand(adbcmd)
+                MsgBox("Reboot " + test.ToString, MsgBoxStyle.Information, "Done")
+            Catch ex As Exception
+
+            End Try
+        Else
+            MsgBox("An Android device must be connected to use this command!", MsgBoxStyle.Information, "Oops!")
+        End If
+    End Sub
+
+    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
+
+        If android.HasConnectedDevices Then
+            Try
+                Dim adbcmd As AdbCommand = Adb.FormAdbCommand(device, "reboot", "fastboot")
+                Dim test = Adb.ExecuteAdbCommand(adbcmd)
+                MsgBox("Reboot " + test.ToString, MsgBoxStyle.Information, "Done")
+            Catch ex As Exception
+
+            End Try
+        Else
+            MsgBox("An Android device must be connected to use this command!", MsgBoxStyle.Information, "Oops!")
+        End If
+    End Sub
+
+    Private Sub RichTextBox1_TextChanged(sender As Object, e As EventArgs) Handles RichTextBox1.TextChanged
+
+    End Sub
+
+    Private Sub Button10_Click(sender As Object, e As EventArgs) Handles Button10.Click
+        If android.HasConnectedDevices Then
+            Try
+                Dim adbcmd As AdbCommand = Adb.FormAdbCommand(device, "reboot", "fastboot")
+                Dim test = Adb.ExecuteAdbCommand(adbcmd)
+                MsgBox("Reboot " + test.ToString, MsgBoxStyle.Information, "Done")
+            Catch ex As Exception
+                MsgBox(ex.Message)
+
+            End Try
+        Else
+            MsgBox("An Android device must be connected to use this command!", MsgBoxStyle.Information, "Oops!")
+        End If
+
+    End Sub
+
+    Private Sub Button13_Click(sender As Object, e As EventArgs) Handles Button13.Click
+        Try
+            If File.Exists("C:\Windows\fastboot.exe") Then
+                Shell("fastboot oem get_identifier_token >> token.txt", AppWinStyle.Hide, True)
+                If File.Exists("token.txt") Then
+                    Process.Start("token.txt")
+                Else
+                    MsgBox("Error writing token.txt to disk!", MsgBoxStyle.Exclamation, "Oops!")
+                End If
+            Else
+                MsgBox("adb needs to be installed to system before we can continue. Please select File -> Install ADB", MsgBoxStyle.Exclamation, "Oops!")
+
+            End If
+        Catch ex As Exception
+            MsgBox("Error: " + ex.Message)
+
+        End Try
+    End Sub
+
+    Private Sub Button38_Click(sender As Object, e As EventArgs) Handles Button38.Click
+        Process.Start("http://htcdev.com/bootloader")
+    End Sub
+
+    Private Sub GroupBox1_Enter(sender As Object, e As EventArgs) Handles GroupBox1.Enter
 
     End Sub
 End Class
