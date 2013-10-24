@@ -1,3 +1,17 @@
+10/24/2013:
+======BeginServerMessage======
+4.0 Release
+Change Log:
+> Optimized Application Manager. Should now work on more HTC and Samsung devices.
+> Temporarily disabled logcat until I can find a way to get it to work correctly with AndroidLib.dll
+> Removed some unwanted or not needed code.
+
+Notes about this very late release:
+I have been going through some issues with my (now) Ex Girlfriend, and it has been a tough few weeks now, I will try to work on this as much as possible, but now that she is gone, it is very difficult to find time to work on this and go to work and take care of my daughter. I will try doing a weekly release when possible, but you guys need to submit some bugs!
+
+
+======EndServerMessage======
+
 9/24/2013:
 ======BeginServerMessage======
 3.9 Early Release!!!!!

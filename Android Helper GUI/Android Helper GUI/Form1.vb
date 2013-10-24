@@ -11,8 +11,8 @@ Public Class Form1
     Private Delegate Sub AppendOutputText2Delegate(ByVal text As String)
     Private WithEvents m_MediaConnectWatcher As ManagementEventWatcher
     Dim serial As String
-    Dim verint As Integer = 52
-    Dim VerString As String = "3.9"
+    Dim verint As Integer = 54
+    Dim VerString As String = "4.0"
     Private Sub ExiToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExiToolStripMenuItem.Click
         End
 
@@ -154,6 +154,7 @@ endInstall:
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
         'Command needs logcat
+        MsgBox("This command has been disabled until further notice.", MsgBoxStyle.Information, "Oops!")
 
     End Sub
 
@@ -974,7 +975,7 @@ endInstall:
         Process.Start(e.LinkText)
     End Sub
 
-    Private Sub Button34_Click(sender As Object, e As EventArgs) Handles Button34.Click
+    Private Sub Button34_Click(sender As Object, e As EventArgs)
         'Command Needs logcat
     End Sub
 

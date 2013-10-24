@@ -72,7 +72,6 @@ Partial Class Form1
         Me.Button15 = New System.Windows.Forms.Button()
         Me.Button8 = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Button34 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Button5 = New System.Windows.Forms.Button()
@@ -99,6 +98,9 @@ Partial Class Form1
         Me.GroupBox18 = New System.Windows.Forms.GroupBox()
         Me.TextBox9 = New System.Windows.Forms.TextBox()
         Me.GroupBox17 = New System.Windows.Forms.GroupBox()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Button10 = New System.Windows.Forms.Button()
         Me.Label41 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Button38 = New System.Windows.Forms.Button()
@@ -119,6 +121,8 @@ Partial Class Form1
         Me.TabPage10 = New System.Windows.Forms.TabPage()
         Me.Label34 = New System.Windows.Forms.Label()
         Me.Label33 = New System.Windows.Forms.Label()
+        Me.TabPage6 = New System.Windows.Forms.TabPage()
+        Me.RichTextBox2 = New System.Windows.Forms.RichTextBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Label35 = New System.Windows.Forms.Label()
         Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
@@ -148,11 +152,6 @@ Partial Class Form1
         Me.sfd1 = New System.Windows.Forms.SaveFileDialog()
         Me.restore1 = New System.Windows.Forms.OpenFileDialog()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.TabPage6 = New System.Windows.Forms.TabPage()
-        Me.RichTextBox2 = New System.Windows.Forms.RichTextBox()
-        Me.Button10 = New System.Windows.Forms.Button()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label25 = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -179,11 +178,11 @@ Partial Class Form1
         Me.TabPage7.SuspendLayout()
         Me.TabPage9.SuspendLayout()
         Me.TabPage10.SuspendLayout()
+        Me.TabPage6.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage11.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabPage6.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -650,7 +649,6 @@ Partial Class Form1
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.Button34)
         Me.GroupBox2.Controls.Add(Me.Button6)
         Me.GroupBox2.Location = New System.Drawing.Point(100, 6)
         Me.GroupBox2.Name = "GroupBox2"
@@ -658,15 +656,6 @@ Partial Class Form1
         Me.GroupBox2.TabIndex = 3
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Logcat"
-        '
-        'Button34
-        '
-        Me.Button34.Location = New System.Drawing.Point(7, 49)
-        Me.Button34.Name = "Button34"
-        Me.Button34.Size = New System.Drawing.Size(75, 39)
-        Me.Button34.TabIndex = 3
-        Me.Button34.Text = "Logcat With Bugreport"
-        Me.Button34.UseVisualStyleBackColor = True
         '
         'Button6
         '
@@ -940,6 +929,34 @@ Partial Class Form1
         Me.GroupBox17.TabStop = False
         Me.GroupBox17.Text = "HTC Bootloader Unlocker"
         '
+        'Label25
+        '
+        Me.Label25.AutoSize = True
+        Me.Label25.Location = New System.Drawing.Point(49, 74)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(324, 26)
+        Me.Label25.TabIndex = 8
+        Me.Label25.Text = "After a text document opens up, select finish to login to htcdev.com" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and go to h" & _
+    "tcdev.com/bootloader/unlock-instructions/page-3" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(7, 24)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(41, 13)
+        Me.Label4.TabIndex = 7
+        Me.Label4.Text = "Step 1."
+        '
+        'Button10
+        '
+        Me.Button10.Location = New System.Drawing.Point(52, 19)
+        Me.Button10.Name = "Button10"
+        Me.Button10.Size = New System.Drawing.Size(75, 23)
+        Me.Button10.TabIndex = 6
+        Me.Button10.Text = "Reboot"
+        Me.Button10.UseVisualStyleBackColor = True
+        '
         'Label41
         '
         Me.Label41.AutoSize = True
@@ -1139,6 +1156,27 @@ Partial Class Form1
         Me.Label33.Size = New System.Drawing.Size(126, 13)
         Me.Label33.TabIndex = 0
         Me.Label33.Text = "List of known issues:"
+        '
+        'TabPage6
+        '
+        Me.TabPage6.Controls.Add(Me.RichTextBox2)
+        Me.TabPage6.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage6.Name = "TabPage6"
+        Me.TabPage6.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage6.Size = New System.Drawing.Size(912, 311)
+        Me.TabPage6.TabIndex = 13
+        Me.TabPage6.Text = "Troubleshoot Errors"
+        Me.TabPage6.UseVisualStyleBackColor = True
+        '
+        'RichTextBox2
+        '
+        Me.RichTextBox2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.RichTextBox2.Location = New System.Drawing.Point(3, 3)
+        Me.RichTextBox2.Name = "RichTextBox2"
+        Me.RichTextBox2.ReadOnly = True
+        Me.RichTextBox2.Size = New System.Drawing.Size(906, 305)
+        Me.RichTextBox2.TabIndex = 0
+        Me.RichTextBox2.Text = ""
         '
         'TabPage3
         '
@@ -1377,55 +1415,6 @@ Partial Class Form1
         Me.PictureBox1.TabIndex = 12
         Me.PictureBox1.TabStop = False
         '
-        'TabPage6
-        '
-        Me.TabPage6.Controls.Add(Me.RichTextBox2)
-        Me.TabPage6.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage6.Name = "TabPage6"
-        Me.TabPage6.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage6.Size = New System.Drawing.Size(912, 311)
-        Me.TabPage6.TabIndex = 13
-        Me.TabPage6.Text = "Troubleshoot Errors"
-        Me.TabPage6.UseVisualStyleBackColor = True
-        '
-        'RichTextBox2
-        '
-        Me.RichTextBox2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.RichTextBox2.Location = New System.Drawing.Point(3, 3)
-        Me.RichTextBox2.Name = "RichTextBox2"
-        Me.RichTextBox2.ReadOnly = True
-        Me.RichTextBox2.Size = New System.Drawing.Size(906, 305)
-        Me.RichTextBox2.TabIndex = 0
-        Me.RichTextBox2.Text = ""
-        '
-        'Button10
-        '
-        Me.Button10.Location = New System.Drawing.Point(52, 19)
-        Me.Button10.Name = "Button10"
-        Me.Button10.Size = New System.Drawing.Size(75, 23)
-        Me.Button10.TabIndex = 6
-        Me.Button10.Text = "Reboot"
-        Me.Button10.UseVisualStyleBackColor = True
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(7, 24)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(41, 13)
-        Me.Label4.TabIndex = 7
-        Me.Label4.Text = "Step 1."
-        '
-        'Label25
-        '
-        Me.Label25.AutoSize = True
-        Me.Label25.Location = New System.Drawing.Point(49, 74)
-        Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(324, 26)
-        Me.Label25.TabIndex = 8
-        Me.Label25.Text = "After a text document opens up, select finish to login to htcdev.com" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "and go to h" & _
-    "tcdev.com/bootloader/unlock-instructions/page-3" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1483,13 +1472,13 @@ Partial Class Form1
         Me.TabPage9.PerformLayout()
         Me.TabPage10.ResumeLayout(False)
         Me.TabPage10.PerformLayout()
+        Me.TabPage6.ResumeLayout(False)
         Me.TabPage3.ResumeLayout(False)
         Me.TabPage3.PerformLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage11.ResumeLayout(False)
         Me.TabPage11.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabPage6.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1600,7 +1589,6 @@ Partial Class Form1
     Friend WithEvents GetHelpToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RichTextBox1 As System.Windows.Forms.RichTextBox
     Friend WithEvents Label35 As System.Windows.Forms.Label
-    Friend WithEvents Button34 As System.Windows.Forms.Button
     Friend WithEvents TabPage11 As System.Windows.Forms.TabPage
     Friend WithEvents Label36 As System.Windows.Forms.Label
     Friend WithEvents Label38 As System.Windows.Forms.Label

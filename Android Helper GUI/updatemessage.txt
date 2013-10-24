@@ -1,10 +1,11 @@
-Version: 3.9
-Build Number: 52
+Version: 4.0
+Build Number: 54
 
 Short Change Log:
 > Removed unwanted/not needed/ and just broken commands
 > Added HTC Bootloader unlocker for you HTC fans!
 > Completely converted to using AndroidLib.dll
+> Optimized Application manager for HTC/Samsung devices
 
 
 Would you like to update?
