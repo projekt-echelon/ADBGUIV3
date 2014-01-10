@@ -2,6 +2,8 @@
 Imports System.IO
 Imports System.Management
 Imports System.Runtime.InteropServices
+Imports System.Deployment.Application
+
 Public Class Form1
     Dim android As AndroidController
     Dim device As Device
@@ -11,8 +13,8 @@ Public Class Form1
     Private Delegate Sub AppendOutputText2Delegate(ByVal text As String)
     Private WithEvents m_MediaConnectWatcher As ManagementEventWatcher
     Dim serial As String
-    Dim verint As Integer = 54
-    Dim VerString As String = "4.0"
+    Dim verint As Integer = 55
+    Dim VerString As String = ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString
     Private Sub ExiToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExiToolStripMenuItem.Click
         End
 
@@ -48,7 +50,6 @@ Public Class Form1
             MsgBox("There has been an error while trying to install this apk to the android device!", MsgBoxStyle.Exclamation, "Oops!")
         End Try
         Button2.Enabled = True
-        PictureBox9.Visible = False
         Label30.Visible = False
         'p.FileName = "adb.exe"
         'Dim arg As String = ofd1.FileName
@@ -58,51 +59,6 @@ Public Class Form1
 endInstall:
     End Sub
 
-    Private Sub InstallADBToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InstallADBToolStripMenuItem.Click
-        Try
-            If MsgBox("This will download and install ADB and FASTBOOT into System32, continue?", MsgBoxStyle.YesNo, "Install core files?") = MsgBoxResult.Yes Then
-
-                Try
-                    My.Computer.Network.DownloadFile("http://urgero.org/adbgui/adb.exe", "adb.exe", vbNullString, vbNullString, True, 5000, True)
-                    My.Computer.Network.DownloadFile("http://urgero.org/adbgui/AdbWinApi.dll", "AdbWinApi.dll", vbNullString, vbNullString, True, 5000, True)
-                    My.Computer.Network.DownloadFile("http://urgero.org/adbgui/AdbWinUsbApi.dll", "AdbWinUsbApi.dll", vbNullString, vbNullString, True, 5000, True)
-                    My.Computer.Network.DownloadFile("http://urgero.org/adbgui/fastboot.exe", "fastboot.exe", vbNullString, vbNullString, True, 5000, True)
-                Catch ex As Exception
-                    MsgBox("Could Not Update Completely!", MsgBoxStyle.Critical, "Error!")
-                    MsgBox("Shutting down application!", MsgBoxStyle.Critical, "Error!")
-                    End
-
-                End Try
-
-                Try
-                    FileCopy("adb.exe", "C:\Windows\adb.exe")
-                    System.IO.File.Delete("adb.exe")
-
-                    FileCopy("AdbWinApi.dll", "C:\Windows\AdbWinApi.dll")
-                    System.IO.File.Delete("AdbWinApi.dll")
-
-                    FileCopy("AdbWinUsbApi.dll", "C:\Windows\AdbWinUsbApi.dll")
-                    System.IO.File.Delete("AdbWinUsbApi.dll")
-
-                    FileCopy("fastboot.exe", "C:\Windows\fastboot.exe")
-                    System.IO.File.Delete("fastboot.exe")
-
-                    MsgBox("Finished Downloading and Installing! You are now ready to use the program!", MsgBoxStyle.Information, "ADB GUI")
-
-                Catch ex As Exception
-                    MsgBox("Could not copy files to the system directory! Please make sure you run as admin!", MsgBoxStyle.Critical, "Error!")
-                    MsgBox("Shutting down application!", MsgBoxStyle.Critical, "Error!")
-                    End
-                End Try
-
-            Else
-            End If
-        Catch ex As Exception
-            MsgBox("Please run this program as Administrator to gain access to System32!", MsgBoxStyle.Information, "ADB GUI")
-
-
-        End Try
-    End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
 
@@ -154,12 +110,13 @@ endInstall:
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
         'Command needs logcat
-        MsgBox("This command has been disabled until further notice.", MsgBoxStyle.Information, "Oops!")
+        Shell("adb logcat", AppWinStyle.NormalFocus)
+        'MsgBox("This command has been disabled until further notice.", MsgBoxStyle.Information, "Oops!")
 
     End Sub
 
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
-        If File.Exists("C:\Windows\adb.exe") Then
+        If File.Exists("adb.exe") Then
             android.Dispose()
         Else
             MsgBox("adb.exe must be installed to system first, please select that option from the menu under File.", MsgBoxStyle.Exclamation, "Oops!")
@@ -183,7 +140,7 @@ EndLine:
         If ofd2.FileName = "" Then
             GoTo endline
         End If
-        If File.Exists("C:\Windows\fastboot.exe") Then
+        If File.Exists("fastboot.exe") Then
             Shell("fastboot flash recovery " + """" + ofd2.FileName + """", AppWinStyle.NormalFocus, True)
             MsgBox("Recovery Flash returned OK, try to reboot to recovery.", MsgBoxStyle.Information, "Done")
         End If
@@ -201,7 +158,7 @@ Endline:
         If ofd3.FileName = "" Then
             GoTo endline
         End If
-        If File.Exists("C:\Windows\fastboot.exe") Then
+        If File.Exists("fastboot.exe") Then
             Shell("fastboot flash boot " + """" + ofd3.FileName + """", AppWinStyle.NormalFocus, True)
             MsgBox("Boot Flash returned OK, try to reboot.", MsgBoxStyle.Information, "Done")
         End If
@@ -214,7 +171,7 @@ Endline:
 
     End Sub
 
-    
+
 
     Private Sub Form1_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
         Try
@@ -233,106 +190,17 @@ Endline:
         '    End
         'End If
         CheckForIllegalCrossThreadCalls = False
-        Try
-            If File.Exists("AndroidLib.dll") Then
 
-            Else
-                File.WriteAllBytes("AndroidLib.dll", My.Resources.AndroidLib)
-            End If
-
-
-        Catch ex As Exception
-            MsgBox("Error setting up ADB Shell DLL: " + ex.Message + vbNewLine + "Please verify that AndroidLib.dll exsist, if not please download from urgero.org.", MsgBoxStyle.Critical, "Oops!")
-        End Try
-        Try
-            If File.Exists("troubleshoot.rtf") Then
-                RichTextBox2.LoadFile("troubleshoot.rtf")
-            Else
-                RichTextBox2.AppendText("The troubleshoot document has not been found.")
-            End If
-        Catch ex As Exception
-
-        End Try
 
         Me.Text = "ADB Helper V: " + VerString
-        Label36.Text = "This program is brought to you by: Mitchell Urgero of URGERO.ORG (c)URGERO.ORG" + vbNewLine + "Application Version: " + VerString + vbNewLine + "Build Number: " + verint.ToString
+        Label36.Text = "This program is brought to you by: Mitchell Urgero of URGERO.ORG (c)URGERO.ORG" + vbNewLine + "Application Version: " + VerString + vbNewLine
         'TabControl1.Enabled = False
         If Directory.Exists("backups") Then
 
         Else
             Directory.CreateDirectory("backups")
         End If
-        If System.IO.File.Exists("C:\Windows\adb.exe") Then
 
-        Else
-            If MsgBox("It seems you are missing some important files from your System32 Directory that are required for this program to run. Would you like to download and install them now? them now?", MsgBoxStyle.YesNo, "Need further installation!") = MsgBoxResult.Yes Then
-
-                Try
-                    If MsgBox("This will download and install ADB and FASTBOOT into System32, continue?", MsgBoxStyle.YesNo, "Install core files?") = MsgBoxResult.Yes Then
-
-
-                        Try
-                            My.Computer.Network.DownloadFile("http://urgero.org/adbgui/adb.exe", "adb.exe", vbNullString, vbNullString, True, 5000, True)
-                            My.Computer.Network.DownloadFile("http://urgero.org/adbgui/AdbWinApi.dll", "AdbWinApi.dll", vbNullString, vbNullString, True, 5000, True)
-                            My.Computer.Network.DownloadFile("http://urgero.org/adbgui/AdbWinUsbApi.dll", "AdbWinUsbApi.dll", vbNullString, vbNullString, True, 5000, True)
-                            My.Computer.Network.DownloadFile("http://urgero.org/adbgui/fastboot.exe", "fastboot.exe", vbNullString, vbNullString, True, 5000, True)
-                            My.Computer.Network.DownloadFile("http://urgero.org/adbgui/AndroidLib.dll", "AndroidLib.dll", vbNullString, vbNullString, True, 5000, True)
-                        Catch ex As Exception
-                            MsgBox("Could Not Update Completely!", MsgBoxStyle.Critical, "Error!")
-                            MsgBox("Shutting down application!", MsgBoxStyle.Critical, "Error!")
-                            End
-
-                        End Try
-
-                        Try
-                            FileCopy("adb.exe", "C:\Windows\adb.exe")
-                            System.IO.File.Delete("adb.exe")
-
-                            FileCopy("AdbWinApi.dll", "C:\Windows\AdbWinApi.dll")
-                            System.IO.File.Delete("AdbWinApi.dll")
-
-                            FileCopy("AdbWinUsbApi.dll", "C:\Windows\AdbWinUsbApi.dll")
-                            System.IO.File.Delete("AdbWinUsbApi.dll")
-
-                            FileCopy("fastboot.exe", "C:\Windows\fastboot.exe")
-                            System.IO.File.Delete("fastboot.exe")
-
-                            MsgBox("Finished Downloading and Installing! You are now ready to use the program!", MsgBoxStyle.Information, "ADB GUI")
-
-                        Catch ex As Exception
-                            MsgBox("Could not copy files to the system directory! Please make sure you run as admin!", MsgBoxStyle.Critical, "Error!")
-                            MsgBox("Shutting down application!", MsgBoxStyle.Critical, "Error!")
-                            End
-                        End Try
-
-                    Else
-                    End If
-                    Try
-                        If File.Exists("AndroidLib.upd") Then
-                        Else
-                            If MsgBox("There is an update for a Library (DLL/Plugin) that needs to be updated in order for ADBGUI to work properly. Would you like to update? (Hitting no will close this application.)", MsgBoxStyle.YesNo, "DLL Update") = MsgBoxResult.Yes Then
-                                My.Computer.Network.DownloadFile("http://urgero.org/adbgui/AndroidLib.dll", "AndroidLib.dll", vbNullString, vbNullString, True, 5000, True)
-                                MsgBox("Update has completed!", MsgBoxStyle.Information, "Finished!")
-                                File.Create("AndroidLib.upd")
-                            Else
-                                End
-                            End If
-                        End If
-                    Catch ex As Exception
-                        MsgBox(ex.Message)
-                    End Try
-
-                Catch ex As Exception
-                    MsgBox("Please run this program as Administrator to gain access to System32!", MsgBoxStyle.Information, "ADB GUI")
-
-
-                End Try
-            Else
-                GoTo resno
-            End If
-        End If
-resno:
-verline:
 
 
         BackgroundWorker1.RunWorkerAsync()
@@ -404,18 +272,6 @@ verline:
         End Try
     End Sub
 
-    Private Sub FDroidOpenSourceToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FDroidOpenSourceToolStripMenuItem.Click
-        Try
-            If MsgBox("This will download and install F-Droid Open Source Application to your to your phone, enabling a new open source repository on your device." + vbNewLine + "Continue?", MsgBoxStyle.YesNo, "Install F-Droid?") = MsgBoxResult.Yes Then
-                My.Computer.Network.DownloadFile("http://f-droid.org/FDroid.apk", "FDroid.apk", vbNullString, vbNullString, True, 5000, True)
-                Shell("adb install FDroid.apk")
-            Else
-                MsgBox("Installation canceled by user!", MsgBoxStyle.Information, "Info")
-            End If
-        Catch ex As Exception
-
-        End Try
-    End Sub
 
     Private Sub SourceCodeBrowserToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SourceCodeBrowserToolStripMenuItem.Click
         Process.Start("https://github.com/mitchellurgero/ADBGUIV3")
@@ -491,14 +347,30 @@ continue1:
             MsgBox("There has been an error communicating to the device. Here are a couple ways to troubleshoot the issue:" & vbNewLine & "1. Check the usb connection, unplug and plug back in the device." & vbNewLine & "2. Restarting the PC may solve the issue directly." & vbNewLine & "3. Make sure you have the correct drivers for your phone, and your version of windows. " & vbNewLine & "NOTE: Sometimes this error comes up because of a bug with android itself, if you see a serial number in the bottom left hand corner of the program, this error MAY be ignored, but take caution. Just because a serial number is there does not always mean that all the commands in this program will work. This error did come up for a reason." + vbNewLine + "Exact error: " + ex.Message, MsgBoxStyle.Exclamation, "Oops!")
         End Try
         Button14.Enabled = True
+        Try
+            Label14.Text = "Loading ADB..."
+            SaveFromResources(Application.StartupPath + "\adb.exe", My.Resources.adb)
+            Label14.Text = "Loading ADB Plugins..."
+            SaveFromResources(Application.StartupPath + "\AdbWinApi.dll", My.Resources.AdbWinApi)
+            SaveFromResources(Application.StartupPath + "\AdbWinUsbApi.dll", My.Resources.AdbWinUsbApi)
+            Label14.Text = "Loading FASTBOOT..."
+            SaveFromResources(Application.StartupPath + "\fastboot.exe", My.Resources.fastboot)
+        Catch ex As Exception
+            MsgBox("Error writing plugins to disk: " + ex.Message + vbNewLine + "Some commands may not work!", MsgBoxStyle.Critical, "Oops!")
+        End Try
         'TabControl1.Enabled = True
-
+        ' PictureBox1.Visible = False
+        '  Label14.Visible = False
         BackgroundWorker2.RunWorkerAsync()
     End Sub
+    Public Sub SaveFromResources(ByVal FilePath As String, ByVal File As Object)
+        Dim FByte() As Byte = File
+        My.Computer.FileSystem.WriteAllBytes(FilePath, FByte, True)
 
+    End Sub
     Private Sub BackgroundWorker2_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker2.DoWork
         Try
-            Label14.Text = "Checking for update from server..."
+            Label14.Text = "Grabbing Server Messages..."
             Dim wc As New System.Net.WebClient()
             Dim address As String = "http://urgero.org/adbgui/adbversion.txt"
             Dim ver = wc.DownloadString(address)
@@ -576,23 +448,23 @@ continue1:
         Catch ex As Exception
             MsgBox("Error finding a device: " & ex.Message)
         End Try
-      
-            Try
-                If android.HasConnectedDevices Then
-                    serial = android.ConnectedDevices(0)
-                    device = android.GetConnectedDevice(serial)
 
-                    'Adds all of the build.prop keys to the listbox
-                    ListBox2.Items.AddRange(device.BuildProp.Keys.ToArray)
+        Try
+            If android.HasConnectedDevices Then
+                serial = android.ConnectedDevices(0)
+                device = android.GetConnectedDevice(serial)
 
-                    'So no items are selected right away
-                    ListBox2.SelectedIndex = -1
-                Else
-                    Label29.Text = "No Devies Connected, or an error occured while reading the build.prop file."
-                End If
-            Catch ex As Exception
+                'Adds all of the build.prop keys to the listbox
+                ListBox2.Items.AddRange(device.BuildProp.Keys.ToArray)
 
-            End Try
+                'So no items are selected right away
+                ListBox2.SelectedIndex = -1
+            Else
+                Label29.Text = "No Devies Connected, or an error occured while reading the build.prop file."
+            End If
+        Catch ex As Exception
+
+        End Try
 
 
 
@@ -674,57 +546,57 @@ continue1:
             Else
 
             End If
-                If Label7.Text = "No Devices Found!" Then
-                    GoTo badLine2
-                Else
+            If Label7.Text = "No Devices Found!" Then
+                GoTo badLine2
+            Else
 
-                End If
-                If File.Exists("C:\Windows\adb.exe") = True Then
-                    GoTo startLine
-                Else
-                    GoTo badLine
-                End If
+            End If
+            If File.Exists("C:\Windows\adb.exe") = True Then
+                GoTo startLine
+            Else
+                GoTo badLine
+            End If
 startLine:
-                AcceptButton = Button23
+            AcceptButton = Button23
 
-                MyProcess = New Process
+            MyProcess = New Process
 
-                With MyProcess.StartInfo
+            With MyProcess.StartInfo
                 .FileName = "CMD.EXE"
                 '.Arguments = "SHELL"
                 .UseShellExecute = False
-                    .CreateNoWindow = True
-                    .RedirectStandardInput = True
-                    .RedirectStandardOutput = True
-                    .RedirectStandardError = True
-                End With
+                .CreateNoWindow = True
+                .RedirectStandardInput = True
+                .RedirectStandardOutput = True
+                .RedirectStandardError = True
+            End With
 
-                MyProcess.Start()
+            MyProcess.Start()
 
-                MyProcess.BeginErrorReadLine()      'start async read on stderr
-                MyProcess.BeginOutputReadLine()     'start async read on stdout
+            MyProcess.BeginErrorReadLine()      'start async read on stderr
+            MyProcess.BeginOutputReadLine()     'start async read on stdout
             ' MyProcess.StandardInput.WriteLine("cls") 'send an EXIT command to the Command Prompt
-                MyProcess.StandardInput.Flush()
-                AppendOutputText("Process Started at: " & MyProcess.StartTime.ToString)
-                TextBox6.Enabled = True
-                Button23.Enabled = True
-                Button25.Enabled = True
+            MyProcess.StandardInput.Flush()
+            AppendOutputText("Process Started at: " & MyProcess.StartTime.ToString)
+            TextBox6.Enabled = True
+            Button23.Enabled = True
+            Button25.Enabled = True
             Button24.Enabled = False
             TextBox6.Focus()
             TextBox6.Text = "adb shell"
             Button23.PerformClick()
 
-                GoTo finStart
+            GoTo finStart
 badLine:
             AppendOutputText("Please make sure ADB is installed to the system dir!" + vbNewLine)
-                GoTo finStart
+            GoTo finStart
 
 badLine2:
             AppendOutputText("An android device needs to be connected first!" + vbNewLine)
 finStart:
-            Catch ex As Exception
-                MsgBox("Error starting ADB SHELL!!", MsgBoxStyle.Critical, "Oops!")
-            End Try
+        Catch ex As Exception
+            MsgBox("Error starting ADB SHELL!!", MsgBoxStyle.Critical, "Oops!")
+        End Try
 
     End Sub
 
@@ -891,20 +763,20 @@ finStart:
 
     End Sub
 
-    Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
+    Private Sub PictureBox2_Click(sender As Object, e As EventArgs)
         Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RKWA3MZANRADC")
     End Sub
 
-    Private Sub PictureBox3_Click(sender As Object, e As EventArgs) Handles PictureBox3.Click
+    Private Sub PictureBox3_Click(sender As Object, e As EventArgs)
         Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RKWA3MZANRADC")
     End Sub
 
 
-    Private Sub PictureBox4_Click(sender As Object, e As EventArgs) Handles PictureBox4.Click
+    Private Sub PictureBox4_Click(sender As Object, e As EventArgs)
         Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RKWA3MZANRADC")
     End Sub
 
-    Private Sub PictureBox5_Click(sender As Object, e As EventArgs) Handles PictureBox5.Click
+    Private Sub PictureBox5_Click(sender As Object, e As EventArgs)
         Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RKWA3MZANRADC")
     End Sub
 
@@ -916,7 +788,7 @@ finStart:
         Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RKWA3MZANRADC")
     End Sub
 
-    Private Sub PictureBox8_Click(sender As Object, e As EventArgs) Handles PictureBox8.Click
+    Private Sub PictureBox8_Click(sender As Object, e As EventArgs)
         Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RKWA3MZANRADC")
     End Sub
 
@@ -1070,5 +942,9 @@ endInstall:
 
     Private Sub GroupBox1_Enter(sender As Object, e As EventArgs) Handles GroupBox1.Enter
 
+    End Sub
+
+    Private Sub Button17_Click(sender As Object, e As EventArgs) Handles Button17.Click
+        Shell("adb shell screenrecord", AppWinStyle.NormalFocus)
     End Sub
 End Class

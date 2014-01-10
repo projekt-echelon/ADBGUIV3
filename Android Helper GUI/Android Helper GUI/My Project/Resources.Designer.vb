@@ -65,8 +65,38 @@ Namespace My.Resources
         '''</summary>
         Friend ReadOnly Property _32() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("32", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("_32", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Byte[].
+        '''</summary>
+        Friend ReadOnly Property adb() As Byte()
+            Get
+                Dim obj As Object = ResourceManager.GetObject("adb", resourceCulture)
+                Return CType(obj,Byte())
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Byte[].
+        '''</summary>
+        Friend ReadOnly Property AdbWinApi() As Byte()
+            Get
+                Dim obj As Object = ResourceManager.GetObject("AdbWinApi", resourceCulture)
+                Return CType(obj,Byte())
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Byte[].
+        '''</summary>
+        Friend ReadOnly Property AdbWinUsbApi() As Byte()
+            Get
+                Dim obj As Object = ResourceManager.GetObject("AdbWinUsbApi", resourceCulture)
+                Return CType(obj,Byte())
             End Get
         End Property
         
@@ -87,6 +117,16 @@ Namespace My.Resources
             Get
                 Dim obj As Object = ResourceManager.GetObject("btn_donateCC_LG", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Byte[].
+        '''</summary>
+        Friend ReadOnly Property fastboot() As Byte()
+            Get
+                Dim obj As Object = ResourceManager.GetObject("fastboot", resourceCulture)
+                Return CType(obj,Byte())
             End Get
         End Property
     End Module

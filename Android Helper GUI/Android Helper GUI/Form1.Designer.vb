@@ -26,12 +26,10 @@ Partial Class Form1
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.InstallADBToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ResetLoginScreenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SourceCodeBrowserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.FDroidOpenSourceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MyAndroidApplicationsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LearningCenterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GetHelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -44,15 +42,11 @@ Partial Class Form1
         Me.Label31 = New System.Windows.Forms.Label()
         Me.Button30 = New System.Windows.Forms.Button()
         Me.Label30 = New System.Windows.Forms.Label()
-        Me.PictureBox9 = New System.Windows.Forms.PictureBox()
-        Me.Label22 = New System.Windows.Forms.Label()
-        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.Label23 = New System.Windows.Forms.Label()
         Me.GroupBox14 = New System.Windows.Forms.GroupBox()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.Button29 = New System.Windows.Forms.Button()
@@ -77,10 +71,7 @@ Partial Class Form1
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
-        Me.PictureBox4 = New System.Windows.Forms.PictureBox()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
-        Me.Label24 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
         Me.GroupBox7 = New System.Windows.Forms.GroupBox()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.Button12 = New System.Windows.Forms.Button()
@@ -88,12 +79,9 @@ Partial Class Form1
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button11 = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.PictureBox5 = New System.Windows.Forms.PictureBox()
         Me.TabPage8 = New System.Windows.Forms.TabPage()
-        Me.Label27 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Button16 = New System.Windows.Forms.Button()
-        Me.PictureBox8 = New System.Windows.Forms.PictureBox()
         Me.TabPage5 = New System.Windows.Forms.TabPage()
         Me.GroupBox18 = New System.Windows.Forms.GroupBox()
         Me.TextBox9 = New System.Windows.Forms.TextBox()
@@ -121,19 +109,15 @@ Partial Class Form1
         Me.TabPage10 = New System.Windows.Forms.TabPage()
         Me.Label34 = New System.Windows.Forms.Label()
         Me.Label33 = New System.Windows.Forms.Label()
-        Me.TabPage6 = New System.Windows.Forms.TabPage()
-        Me.RichTextBox2 = New System.Windows.Forms.RichTextBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Label35 = New System.Windows.Forms.Label()
         Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
-        Me.Label21 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.TabPage11 = New System.Windows.Forms.TabPage()
         Me.Label38 = New System.Windows.Forms.Label()
         Me.Label37 = New System.Windows.Forms.Label()
@@ -152,11 +136,12 @@ Partial Class Form1
         Me.sfd1 = New System.Windows.Forms.SaveFileDialog()
         Me.restore1 = New System.Windows.Forms.OpenFileDialog()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.Button17 = New System.Windows.Forms.Button()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
-        CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage2.SuspendLayout()
         Me.GroupBox14.SuspendLayout()
         Me.GroupBox13.SuspendLayout()
@@ -165,24 +150,20 @@ Partial Class Form1
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage4.SuspendLayout()
         Me.GroupBox7.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
-        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage8.SuspendLayout()
-        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage5.SuspendLayout()
         Me.GroupBox18.SuspendLayout()
         Me.GroupBox17.SuspendLayout()
         Me.TabPage7.SuspendLayout()
         Me.TabPage9.SuspendLayout()
         Me.TabPage10.SuspendLayout()
-        Me.TabPage6.SuspendLayout()
         Me.TabPage3.SuspendLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage11.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -196,16 +177,10 @@ Partial Class Form1
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InstallADBToolStripMenuItem, Me.ResetLoginScreenToolStripMenuItem, Me.ExiToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ResetLoginScreenToolStripMenuItem, Me.ExiToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(35, 20)
         Me.FileToolStripMenuItem.Text = "File"
-        '
-        'InstallADBToolStripMenuItem
-        '
-        Me.InstallADBToolStripMenuItem.Name = "InstallADBToolStripMenuItem"
-        Me.InstallADBToolStripMenuItem.Size = New System.Drawing.Size(189, 22)
-        Me.InstallADBToolStripMenuItem.Text = "Install ADB"
         '
         'ResetLoginScreenToolStripMenuItem
         '
@@ -222,7 +197,7 @@ Partial Class Form1
         '
         'OToolStripMenuItem
         '
-        Me.OToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SourceCodeBrowserToolStripMenuItem, Me.FDroidOpenSourceToolStripMenuItem, Me.MyAndroidApplicationsToolStripMenuItem})
+        Me.OToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SourceCodeBrowserToolStripMenuItem, Me.MyAndroidApplicationsToolStripMenuItem})
         Me.OToolStripMenuItem.Name = "OToolStripMenuItem"
         Me.OToolStripMenuItem.Size = New System.Drawing.Size(111, 20)
         Me.OToolStripMenuItem.Text = "Open Source Items"
@@ -232,12 +207,6 @@ Partial Class Form1
         Me.SourceCodeBrowserToolStripMenuItem.Name = "SourceCodeBrowserToolStripMenuItem"
         Me.SourceCodeBrowserToolStripMenuItem.Size = New System.Drawing.Size(188, 22)
         Me.SourceCodeBrowserToolStripMenuItem.Text = "Source Code(Browser)"
-        '
-        'FDroidOpenSourceToolStripMenuItem
-        '
-        Me.FDroidOpenSourceToolStripMenuItem.Name = "FDroidOpenSourceToolStripMenuItem"
-        Me.FDroidOpenSourceToolStripMenuItem.Size = New System.Drawing.Size(188, 22)
-        Me.FDroidOpenSourceToolStripMenuItem.Text = "F-Droid Open Source"
         '
         'MyAndroidApplicationsToolStripMenuItem
         '
@@ -267,7 +236,6 @@ Partial Class Form1
         Me.TabControl1.Controls.Add(Me.TabPage7)
         Me.TabControl1.Controls.Add(Me.TabPage9)
         Me.TabControl1.Controls.Add(Me.TabPage10)
-        Me.TabControl1.Controls.Add(Me.TabPage6)
         Me.TabControl1.Controls.Add(Me.TabPage3)
         Me.TabControl1.Controls.Add(Me.TabPage11)
         Me.TabControl1.Location = New System.Drawing.Point(12, 27)
@@ -285,9 +253,6 @@ Partial Class Form1
         Me.TabPage1.Controls.Add(Me.Label31)
         Me.TabPage1.Controls.Add(Me.Button30)
         Me.TabPage1.Controls.Add(Me.Label30)
-        Me.TabPage1.Controls.Add(Me.PictureBox9)
-        Me.TabPage1.Controls.Add(Me.Label22)
-        Me.TabPage1.Controls.Add(Me.PictureBox3)
         Me.TabPage1.Controls.Add(Me.Button2)
         Me.TabPage1.Controls.Add(Me.Button1)
         Me.TabPage1.Controls.Add(Me.Label1)
@@ -373,38 +338,6 @@ Partial Class Form1
         Me.Label30.Text = "Please wait, installing the apk now!"
         Me.Label30.Visible = False
         '
-        'PictureBox9
-        '
-        Me.PictureBox9.Enabled = False
-        Me.PictureBox9.Image = Global.Android_Helper_GUI.My.Resources.Resources._32
-        Me.PictureBox9.Location = New System.Drawing.Point(270, 80)
-        Me.PictureBox9.Name = "PictureBox9"
-        Me.PictureBox9.Size = New System.Drawing.Size(30, 30)
-        Me.PictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox9.TabIndex = 13
-        Me.PictureBox9.TabStop = False
-        Me.PictureBox9.Visible = False
-        '
-        'Label22
-        '
-        Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(745, 198)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(144, 26)
-        Me.Label22.TabIndex = 9
-        Me.Label22.Text = "Enjoy the program? Why not " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "buy me a coffee for my time?" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        '
-        'PictureBox3
-        '
-        Me.PictureBox3.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PictureBox3.Image = Global.Android_Helper_GUI.My.Resources.Resources.btn_donateCC_LG
-        Me.PictureBox3.Location = New System.Drawing.Point(745, 225)
-        Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(161, 80)
-        Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox3.TabIndex = 8
-        Me.PictureBox3.TabStop = False
-        '
         'Button2
         '
         Me.Button2.Enabled = False
@@ -449,7 +382,7 @@ Partial Class Form1
         '
         'TabPage2
         '
-        Me.TabPage2.Controls.Add(Me.Label23)
+        Me.TabPage2.Controls.Add(Me.GroupBox3)
         Me.TabPage2.Controls.Add(Me.GroupBox14)
         Me.TabPage2.Controls.Add(Me.GroupBox13)
         Me.TabPage2.Controls.Add(Me.GroupBox12)
@@ -457,7 +390,6 @@ Partial Class Form1
         Me.TabPage2.Controls.Add(Me.GroupBox4)
         Me.TabPage2.Controls.Add(Me.GroupBox2)
         Me.TabPage2.Controls.Add(Me.GroupBox1)
-        Me.TabPage2.Controls.Add(Me.PictureBox4)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
@@ -465,15 +397,6 @@ Partial Class Form1
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Basic Commands"
         Me.TabPage2.UseVisualStyleBackColor = True
-        '
-        'Label23
-        '
-        Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(742, 201)
-        Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(144, 26)
-        Me.Label23.TabIndex = 13
-        Me.Label23.Text = "Enjoy the program? Why not " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "buy me a coffee for my time?" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'GroupBox14
         '
@@ -705,25 +628,12 @@ Partial Class Form1
         Me.Button3.Text = "Bootloader"
         Me.Button3.UseVisualStyleBackColor = True
         '
-        'PictureBox4
-        '
-        Me.PictureBox4.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PictureBox4.Image = Global.Android_Helper_GUI.My.Resources.Resources.btn_donateCC_LG
-        Me.PictureBox4.Location = New System.Drawing.Point(745, 228)
-        Me.PictureBox4.Name = "PictureBox4"
-        Me.PictureBox4.Size = New System.Drawing.Size(161, 80)
-        Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox4.TabIndex = 12
-        Me.PictureBox4.TabStop = False
-        '
         'TabPage4
         '
-        Me.TabPage4.Controls.Add(Me.Label24)
         Me.TabPage4.Controls.Add(Me.Label8)
         Me.TabPage4.Controls.Add(Me.GroupBox7)
         Me.TabPage4.Controls.Add(Me.GroupBox6)
         Me.TabPage4.Controls.Add(Me.Label3)
-        Me.TabPage4.Controls.Add(Me.PictureBox5)
         Me.TabPage4.Location = New System.Drawing.Point(4, 22)
         Me.TabPage4.Name = "TabPage4"
         Me.TabPage4.Padding = New System.Windows.Forms.Padding(3)
@@ -731,24 +641,6 @@ Partial Class Form1
         Me.TabPage4.TabIndex = 3
         Me.TabPage4.Text = "Flash"
         Me.TabPage4.UseVisualStyleBackColor = True
-        '
-        'Label24
-        '
-        Me.Label24.AutoSize = True
-        Me.Label24.Location = New System.Drawing.Point(742, 198)
-        Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(144, 26)
-        Me.Label24.TabIndex = 11
-        Me.Label24.Text = "Enjoy the program? Why not " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "buy me a coffee for my time?" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(177, 7)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(177, 13)
-        Me.Label8.TabIndex = 5
-        Me.Label8.Text = "This Page requires Developer Mode"
         '
         'GroupBox7
         '
@@ -811,29 +703,17 @@ Partial Class Form1
         'Label3
         '
         Me.Label3.AutoSize = True
+        Me.Label3.ForeColor = System.Drawing.Color.Red
         Me.Label3.Location = New System.Drawing.Point(7, 7)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(164, 13)
         Me.Label3.TabIndex = 0
         Me.Label3.Text = "****This page is currently in beta!!"
         '
-        'PictureBox5
-        '
-        Me.PictureBox5.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PictureBox5.Image = Global.Android_Helper_GUI.My.Resources.Resources.btn_donateCC_LG
-        Me.PictureBox5.Location = New System.Drawing.Point(745, 225)
-        Me.PictureBox5.Name = "PictureBox5"
-        Me.PictureBox5.Size = New System.Drawing.Size(161, 80)
-        Me.PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox5.TabIndex = 10
-        Me.PictureBox5.TabStop = False
-        '
         'TabPage8
         '
-        Me.TabPage8.Controls.Add(Me.Label27)
         Me.TabPage8.Controls.Add(Me.Label13)
         Me.TabPage8.Controls.Add(Me.Button16)
-        Me.TabPage8.Controls.Add(Me.PictureBox8)
         Me.TabPage8.Location = New System.Drawing.Point(4, 22)
         Me.TabPage8.Name = "TabPage8"
         Me.TabPage8.Padding = New System.Windows.Forms.Padding(3)
@@ -841,15 +721,6 @@ Partial Class Form1
         Me.TabPage8.TabIndex = 7
         Me.TabPage8.Text = "Samsung Devices"
         Me.TabPage8.UseVisualStyleBackColor = True
-        '
-        'Label27
-        '
-        Me.Label27.AutoSize = True
-        Me.Label27.Location = New System.Drawing.Point(742, 201)
-        Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(144, 26)
-        Me.Label27.TabIndex = 11
-        Me.Label27.Text = "Enjoy the program? Why not " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "buy me a coffee for my time?" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'Label13
         '
@@ -868,17 +739,6 @@ Partial Class Form1
         Me.Button16.TabIndex = 0
         Me.Button16.Text = "Odin 4.22"
         Me.Button16.UseVisualStyleBackColor = True
-        '
-        'PictureBox8
-        '
-        Me.PictureBox8.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PictureBox8.Image = Global.Android_Helper_GUI.My.Resources.Resources.btn_donateCC_LG
-        Me.PictureBox8.Location = New System.Drawing.Point(745, 228)
-        Me.PictureBox8.Name = "PictureBox8"
-        Me.PictureBox8.Size = New System.Drawing.Size(161, 80)
-        Me.PictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox8.TabIndex = 10
-        Me.PictureBox8.TabStop = False
         '
         'TabPage5
         '
@@ -1157,39 +1017,16 @@ Partial Class Form1
         Me.Label33.TabIndex = 0
         Me.Label33.Text = "List of known issues:"
         '
-        'TabPage6
-        '
-        Me.TabPage6.Controls.Add(Me.RichTextBox2)
-        Me.TabPage6.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage6.Name = "TabPage6"
-        Me.TabPage6.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage6.Size = New System.Drawing.Size(912, 311)
-        Me.TabPage6.TabIndex = 13
-        Me.TabPage6.Text = "Troubleshoot Errors"
-        Me.TabPage6.UseVisualStyleBackColor = True
-        '
-        'RichTextBox2
-        '
-        Me.RichTextBox2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.RichTextBox2.Location = New System.Drawing.Point(3, 3)
-        Me.RichTextBox2.Name = "RichTextBox2"
-        Me.RichTextBox2.ReadOnly = True
-        Me.RichTextBox2.Size = New System.Drawing.Size(906, 305)
-        Me.RichTextBox2.TabIndex = 0
-        Me.RichTextBox2.Text = ""
-        '
         'TabPage3
         '
         Me.TabPage3.Controls.Add(Me.Label35)
         Me.TabPage3.Controls.Add(Me.RichTextBox1)
-        Me.TabPage3.Controls.Add(Me.Label21)
         Me.TabPage3.Controls.Add(Me.Label15)
         Me.TabPage3.Controls.Add(Me.Label12)
         Me.TabPage3.Controls.Add(Me.Label11)
         Me.TabPage3.Controls.Add(Me.Label10)
         Me.TabPage3.Controls.Add(Me.Label9)
         Me.TabPage3.Controls.Add(Me.Label2)
-        Me.TabPage3.Controls.Add(Me.PictureBox2)
         Me.TabPage3.Location = New System.Drawing.Point(4, 22)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
@@ -1215,15 +1052,6 @@ Partial Class Form1
         Me.RichTextBox1.Size = New System.Drawing.Size(550, 179)
         Me.RichTextBox1.TabIndex = 8
         Me.RichTextBox1.Text = ""
-        '
-        'Label21
-        '
-        Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(742, 198)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(144, 26)
-        Me.Label21.TabIndex = 7
-        Me.Label21.Text = "Enjoy the program? Why not " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "buy me a coffee for my time?" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'Label15
         '
@@ -1278,17 +1106,6 @@ Partial Class Form1
         Me.Label2.Size = New System.Drawing.Size(337, 91)
         Me.Label2.TabIndex = 0
         Me.Label2.Text = resources.GetString("Label2.Text")
-        '
-        'PictureBox2
-        '
-        Me.PictureBox2.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.PictureBox2.Image = Global.Android_Helper_GUI.My.Resources.Resources.btn_donateCC_LG
-        Me.PictureBox2.Location = New System.Drawing.Point(745, 225)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(161, 80)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox2.TabIndex = 6
-        Me.PictureBox2.TabStop = False
         '
         'TabPage11
         '
@@ -1407,23 +1224,53 @@ Partial Class Form1
         '
         'PictureBox1
         '
-        Me.PictureBox1.Image = Global.Android_Helper_GUI.My.Resources.Resources._32
-        Me.PictureBox1.Location = New System.Drawing.Point(348, 370)
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(351, 370)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(30, 30)
+        Me.PictureBox1.Size = New System.Drawing.Size(31, 31)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 12
+        Me.PictureBox1.TabIndex = 3
         Me.PictureBox1.TabStop = False
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.Button17)
+        Me.GroupBox3.Location = New System.Drawing.Point(508, 7)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(398, 112)
+        Me.GroupBox3.TabIndex = 9
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "KitKat(4.4) Only Commands"
+        '
+        'Button17
+        '
+        Me.Button17.Location = New System.Drawing.Point(6, 20)
+        Me.Button17.Name = "Button17"
+        Me.Button17.Size = New System.Drawing.Size(89, 23)
+        Me.Button17.TabIndex = 0
+        Me.Button17.Text = "Screen Record"
+        Me.Button17.UseVisualStyleBackColor = True
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.ForeColor = System.Drawing.Color.Red
+        Me.Label8.Location = New System.Drawing.Point(7, 107)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(416, 13)
+        Me.Label8.TabIndex = 5
+        Me.Label8.Text = "*By clicking the buttons above, you agree you are using these options at your own" & _
+    " risk!"
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(946, 404)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Button14)
         Me.Controls.Add(Me.Label14)
         Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.TabControl1)
@@ -1438,10 +1285,7 @@ Partial Class Form1
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
-        CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage2.ResumeLayout(False)
-        Me.TabPage2.PerformLayout()
         Me.GroupBox14.ResumeLayout(False)
         Me.GroupBox14.PerformLayout()
         Me.GroupBox13.ResumeLayout(False)
@@ -1452,15 +1296,12 @@ Partial Class Form1
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
-        CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage4.ResumeLayout(False)
         Me.TabPage4.PerformLayout()
         Me.GroupBox7.ResumeLayout(False)
         Me.GroupBox6.ResumeLayout(False)
-        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage8.ResumeLayout(False)
         Me.TabPage8.PerformLayout()
-        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage5.ResumeLayout(False)
         Me.GroupBox18.ResumeLayout(False)
         Me.GroupBox18.PerformLayout()
@@ -1472,13 +1313,12 @@ Partial Class Form1
         Me.TabPage9.PerformLayout()
         Me.TabPage10.ResumeLayout(False)
         Me.TabPage10.PerformLayout()
-        Me.TabPage6.ResumeLayout(False)
         Me.TabPage3.ResumeLayout(False)
         Me.TabPage3.PerformLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage11.ResumeLayout(False)
         Me.TabPage11.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox3.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1489,7 +1329,6 @@ Partial Class Form1
     Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
     Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
     Friend WithEvents ofd1 As System.Windows.Forms.OpenFileDialog
-    Friend WithEvents InstallADBToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Button1 As System.Windows.Forms.Button
@@ -1517,17 +1356,14 @@ Partial Class Form1
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Button14 As System.Windows.Forms.Button
     Friend WithEvents Button15 As System.Windows.Forms.Button
-    Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents TabPage8 As System.Windows.Forms.TabPage
     Friend WithEvents Button16 As System.Windows.Forms.Button
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents OToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SourceCodeBrowserToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents FDroidOpenSourceToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents BackgroundWorker2 As System.ComponentModel.BackgroundWorker
     Friend WithEvents Label14 As System.Windows.Forms.Label
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents BackgroundWorker3 As System.ComponentModel.BackgroundWorker
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents Label10 As System.Windows.Forms.Label
@@ -1563,21 +1399,10 @@ Partial Class Form1
     Friend WithEvents Label20 As System.Windows.Forms.Label
     Friend WithEvents Button29 As System.Windows.Forms.Button
     Friend WithEvents restore1 As System.Windows.Forms.OpenFileDialog
-    Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
-    Friend WithEvents Label21 As System.Windows.Forms.Label
-    Friend WithEvents Label22 As System.Windows.Forms.Label
-    Friend WithEvents PictureBox3 As System.Windows.Forms.PictureBox
-    Friend WithEvents Label23 As System.Windows.Forms.Label
-    Friend WithEvents PictureBox4 As System.Windows.Forms.PictureBox
-    Friend WithEvents Label24 As System.Windows.Forms.Label
-    Friend WithEvents PictureBox5 As System.Windows.Forms.PictureBox
-    Friend WithEvents Label27 As System.Windows.Forms.Label
-    Friend WithEvents PictureBox8 As System.Windows.Forms.PictureBox
     Friend WithEvents TabPage9 As System.Windows.Forms.TabPage
     Friend WithEvents ListBox2 As System.Windows.Forms.ListBox
     Friend WithEvents Label29 As System.Windows.Forms.Label
     Friend WithEvents Label28 As System.Windows.Forms.Label
-    Friend WithEvents PictureBox9 As System.Windows.Forms.PictureBox
     Friend WithEvents Label30 As System.Windows.Forms.Label
     Friend WithEvents Button30 As System.Windows.Forms.Button
     Friend WithEvents Label31 As System.Windows.Forms.Label
@@ -1587,8 +1412,6 @@ Partial Class Form1
     Friend WithEvents Label33 As System.Windows.Forms.Label
     Friend WithEvents LearningCenterToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents GetHelpToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents RichTextBox1 As System.Windows.Forms.RichTextBox
-    Friend WithEvents Label35 As System.Windows.Forms.Label
     Friend WithEvents TabPage11 As System.Windows.Forms.TabPage
     Friend WithEvents Label36 As System.Windows.Forms.Label
     Friend WithEvents Label38 As System.Windows.Forms.Label
@@ -1606,10 +1429,14 @@ Partial Class Form1
     Friend WithEvents Button13 As System.Windows.Forms.Button
     Friend WithEvents Button9 As System.Windows.Forms.Button
     Friend WithEvents Button7 As System.Windows.Forms.Button
-    Friend WithEvents TabPage6 As System.Windows.Forms.TabPage
-    Friend WithEvents RichTextBox2 As System.Windows.Forms.RichTextBox
     Friend WithEvents Button10 As System.Windows.Forms.Button
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label25 As System.Windows.Forms.Label
+    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents Label35 As System.Windows.Forms.Label
+    Friend WithEvents RichTextBox1 As System.Windows.Forms.RichTextBox
+    Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
+    Friend WithEvents Button17 As System.Windows.Forms.Button
+    Friend WithEvents Label8 As System.Windows.Forms.Label
 
 End Class

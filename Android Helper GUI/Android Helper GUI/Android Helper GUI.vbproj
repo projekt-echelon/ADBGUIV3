@@ -13,7 +13,7 @@
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <PublishUrl>publish/</PublishUrl>
+    <PublishUrl>ftp://981.433.myftpupload.com/adbguipublish/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -22,12 +22,16 @@
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://urgero.org/adb_publish/</InstallUrl>
+    <MapFileExtensions>false</MapFileExtensions>
+    <InstallUrl>http://urgero.org/adbguipublish/</InstallUrl>
+    <UpdateUrl>http://urgero.org/adbguipublish/</UpdateUrl>
+    <ProductName>ADBGUI</ProductName>
+    <PublisherName>URGERO.ORG</PublisherName>
+    <SuiteName>ADBGUI Suite</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.htm</WebPage>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>3.4.6.0</ApplicationVersion>
+    <ApplicationVersion>4.2.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -72,24 +76,31 @@
     <ApplicationIcon>Visualpharm-Icons8-Metro-Style-Cell-Phones-Android.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>false</SignManifests>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>6185189AEED30FCF3EBAC74A3E3775798C9472CB</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>A64D3016C0F5F12C60B6F9FEE8207662DC726DB0</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>Android Helper GUI_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>false</GenerateManifests>
+    <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Android Helper GUI_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AndroidLib, Version=1.5.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\AndroidLib-master\AndroidLib\bin\Debug\AndroidLib.dll</HintPath>
+      <HintPath>..\..\..\AndroidLib\AndroidLib\bin\Debug\AndroidLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -188,6 +199,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Android Helper GUI_TemporaryKey.pfx" />
     <None Include="My Project\app.manifest">
       <SubType>Designer</SubType>
     </None>
@@ -203,9 +215,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\32.gif" />
     <None Include="Resources\btn_donateCC_LG.gif" />
     <None Include="bin\Debug\AndroidLib.dll" />
+    <None Include="Resources\32.gif" />
+    <None Include="bin\Debug\adb.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="bin\Debug\AdbWinApi.dll" />
+    <None Include="bin\Debug\AdbWinUsbApi.dll" />
+    <None Include="bin\Debug\fastboot.exe" />
     <Content Include="Visualpharm-Icons8-Metro-Style-Cell-Phones-Android.ico" />
   </ItemGroup>
   <ItemGroup>
